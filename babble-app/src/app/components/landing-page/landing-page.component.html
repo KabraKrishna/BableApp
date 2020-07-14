@@ -1,0 +1,318 @@
+<section #home class="container-section" style="height: 92vh;">
+    <!-- [ngClass]="{'hide-section': displayElememnt.mode !== 'home'}" -->
+    <div class="right-bottom-video">
+        <span></span>
+    </div>
+
+    <div class="row-top" style="align-items: center;">
+        <div class="logo-row">
+            <div class="row-top">
+                <div class="logo-col-1">
+                    <img src="../../../assets/logo-babbleapp-1.jpg" width="75">
+                </div>
+                <div class="logo-col-2">
+                    <span>BABBLE APP</span>
+                    <span>Speak&nbsp;|&nbsp;Learn&nbsp;|&nbsp;Grow</span>
+                </div>
+            </div>
+        </div>
+        <div class="nav-row">
+            <div class="nav-col" [class.nav-item-selected]="displayElememnt.mode === 'home'">
+                <a (click)="scrollToElement(home)">HOME</a>
+            </div>
+            <div class="nav-col" [class.nav-item-selected]="displayElememnt.mode === 'video'">
+                <a (click)="scrollToElement(intro)">HOW IT WORKS</a>
+            </div>
+            <div class="nav-col" [class.nav-item-selected]="displayElememnt.mode === 'about'">
+                <a (click)="scrollToElement(about)">ABOUT US</a>
+            </div>
+            <div class="nav-col" [class.nav-item-selected]="displayElememnt.mode === 'about'">
+                <a (click)="scrollToElement(team)">OUR TEAM</a>
+            </div>
+            <div class="nav-col" [class.nav-item-selected]="displayElememnt.mode === 'contact'">
+                <a (click)="scrollToElement(contact)">CONTACT</a>
+            </div>
+            <div class="tutor-button">
+                Join Us As Tutor
+            </div>
+        </div>
+    </div>
+
+    <div class="row-top" style="justify-content: space-between">
+        <div class="body-col" style="justify-content: flex-end;">
+            <img src="../../../assets/illustration-2.jpg" width="500" style="margin-top:100px">
+        </div>
+        <div class="body-col" style="justify-content: flex-start;">
+
+            <div class="content-text">Learn English <br>By Speaking English</div>
+            <span class="content-subtext">Learn to speak fluently in english in your leasure hours,
+                by sparing<br>
+                <strong style="font-size: 1.8rem;">15 Minutes </strong> daily at your finguretips.
+            </span>
+            <div class="row-top" style="justify-content: center;">
+                <div class="content-button" (click)="scrollToElement(intro)">
+                    Get Started
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="content-button">
+                    Register Now
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<section #intro class="container-section" style="height: 90vh;">
+
+    <div class="row-top" style="justify-content: space-between; margin-top: 36px;">
+        <div class="body-col video-bg">
+            <youtube-player videoId="GYAB4Td62zI" suggestedQuality="highres" [height]="300" [width]="500">
+            </youtube-player>
+        </div>
+        <div class="body-col vide-besid">
+
+            <div class="right-top-heading">
+                <div class="heading-text">
+                    How It Works
+                </div>
+            </div>
+
+            <div class="row-top" style="justify-content: space-evenly;
+                width: 70%; padding-top: 5px;">
+                <div class="body-col heading-subtext">
+                    How babble app helps
+                </div>
+                <div class="body-col heading-subtext">
+                    What we offer
+                </div>
+            </div>
+
+            <div class="body-col list-cntent">
+                <div class="row-top">
+                    <div class="icon-bg">
+                        <img src="../../../assets/icons/interview.png" width="35">
+                    </div>
+                    <div class="body-col" style="justify-content: center;">
+                        <strong>One-on-One Interactive sessions<br>
+                            with Expert Tutors</strong>
+                    </div>
+                </div>
+
+                <div class="row-top">
+                    <div class="icon-bg">
+                        <img src="../../../assets/icons/video-call.png" width="30">
+                    </div>
+                    <div class="body-col" style="justify-content: center;">
+                        <strong>Both Audio | Video Calling Options Available</strong>
+                    </div>
+                </div>
+
+                <div class="row-top">
+                    <div class="icon-bg">
+                        <img src="../../../assets/icons/calendar.png" width="30">
+                    </div>
+                    <div class="body-col" style="justify-content: center;">
+                        <strong>Frequency 15 minutes per day</strong>
+                    </div>
+                </div>
+
+                <div class="row-top">
+                    <div class="icon-bg">
+                        <img src="../../../assets/icons/report.png" width="35">
+                    </div>
+                    <div class="body-col" style="justify-content: center;">
+                        <strong>Personalized Counselling & Daily Performance <br>Reporting</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section #about class="container-section" style="height: 90vh;">
+
+    <div class="row-top"
+        style="flex-direction: row-reverse !important; justify-content: space-evenly; margin-top: 24px;">
+        <div class="body-col left-col-bg">
+            <img src="../../../assets/team.jpg" width="600">
+        </div>
+        <div class="body-col right-col-bg">
+
+            <div class="right-top-heading">
+                <div class="heading-text" style="padding-right: 20px;">
+                    About Us
+                </div>
+            </div>
+            <p class="body-text">
+                We are a young team of enthusiasts working towards achieving a common goal
+                of making the process of speaking english effective and fun.<br><br>
+
+                Set off during the COVID pandemic, a time when the world came to an introspective juncture,
+                the main thought behind the idea was to help people make the best use of their time by honing
+                a much needed skill of speaking fluent and confident english sitting in the comfort of their
+                homes.<br><br>
+
+                There is too much being talked about various courses at offer these days,
+                that come with a promise to make you proficient in the language in a limited period of time.<br><br>
+
+                At Team BabbleApp we seek to bring in a new perspective to look at the problem
+                by restricting our prime focus purely ,as PRACTICE.<br>
+            </p>
+
+            <div class="vision-text">
+                <div class="q-bottom-right">
+                    &rdquo;
+                </div>
+                <strong>Our vision is as simple as giving voice to every thoughtful mind</strong>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section #team class="container-section" style="height: 80vh;">
+
+    <div class="row-top team-col">
+
+        
+        <div class="right-top-heading">
+            <div class="heading-text" style="padding-right: 20px;">
+                Our Team
+            </div>
+        </div>
+
+        
+        <div class="body-col team-member" *ngFor="let teamMember of appTeam">
+
+            <div class="card">
+                <div class="card-header">
+                    Header
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{teamMember.name}}</h5>
+                    <p class="card-text">Content</p>
+                </div>
+                <div class="card-footer">
+                    Footer
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<section #contact class="container-section" style="height: 88vh;">
+
+    <div class="row-top" style="justify-content: space-between; margin-top: 48px">
+        <div class="contact-bottom">
+        </div>
+        <div class="body-col video-bg">
+
+            <div class="contact-form w-75 mx-auto">
+                <form [formGroup]="contactForm" class="w-100">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" formControlName="name"
+                            placeholder="Enter your Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact">Contact No. / Email</label>
+                        <input type="text" class="form-control" id="contact" formControlName="contact"
+                            placeholder="Enter contact no or email">
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" formControlName="email">
+                    </div> -->
+
+                    <div class="form-group">
+                        <label for="username">Message</label>
+                        <textarea class="form-control" formControlName="message" rows="3"
+                            placeholder="Your message to us..."></textarea>
+                    </div>
+                    <button class="btn btn-block btn-primary">Submit</button>
+                </form>
+            </div>
+
+            <!-- <img src="../../../assets/handshake-colour-400px.png" width="300"> -->
+
+        </div>
+
+        <div class="body-col reach-out">
+
+            <div class="right-top-heading">
+                <div class="heading-text" style="padding-right: 20px;">
+                    Contact Us
+                </div>
+            </div>
+
+            <div class="row-top">
+                <div class="body-col" style="justify-content: center;">
+                    <strong>Reach Out To Us</strong>
+                </div>
+            </div>
+
+            <div class="row-top mt-3">
+                <div class="icon-bg">
+                    <img src="../../../assets/icons/pin.png" width="25">
+                </div>
+                <div class="body-col" style="justify-content: center;">
+                    <span>BAJAJ INCUBATION CENTER Dr. B.A.M.U Campus<br> Aurangabad, Maharashtra 431004</span>
+                </div>
+            </div>
+
+            <div class="row-top mt-3">
+                <div class="icon-bg">
+                    <img src="../../../assets/icons/mail.png" width="25">
+                </div>
+                <div class="body-col" style="justify-content: center;">
+                    <span>info@babbleapp.in</span>
+                </div>
+            </div>
+
+            <div class="row-top mt-3">
+                <div class="icon-bg">
+                    <img src="../../../assets/icons/whatsapp.png" width="25">
+                </div>
+                <div class="body-col" style="justify-content: center;">
+                    <span>(+91) - 9130081881&nbsp;&nbsp;|&nbsp;&nbsp;(+91) - 9156897772</span>
+                </div>
+            </div>
+
+
+            <!-- &copy; 2020 babbleapp.in
+                        &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  -->
+
+            <div class="row-top follow-us-row">
+                <div class="body-col justify-content-center" style="height: 40px;">
+                    <span>Connect With Us&nbsp;&nbsp;</span>
+                </div>
+                <br>
+                <div class="follow-us-col">
+                    <a href="https://www.facebook.com/Babble-app-106428867812132/">
+                        <img src="../../../assets/icons/facebook.png" width="20">
+                    </a>
+                </div>
+
+                <div class="follow-us-col">
+                    <a href="https://www.instagram.com/babbleapp_/">
+                        <img src="../../../assets/icons/instagram.png" width="20">
+                    </a>
+                </div>
+
+                <div class="bottom-contact-img">
+                    <img src="../../../assets/3778874.jpg" width="260">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

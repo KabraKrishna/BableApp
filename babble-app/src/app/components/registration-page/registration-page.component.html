@@ -1,0 +1,179 @@
+
+
+<div class="form-title">
+    <h1>REGISTRATION FORM</h1>
+</div>
+
+<!-- Form -->
+<div class="form-container">
+<form class="form-horizontal" [formGroup]="myForm" (ngSubmit)="submitForm()">
+
+    <!-- First Name -->
+    <div class="form-group">
+        <span><label class="col-sm-4 control-label-container control-label">FIRST NAME:&nbsp; </label></span>
+            <div class="form-control-container"> 
+                <input class="col-sm-12 form-control" type="text" formControlName="firstName" #firstName>
+                    <p class="error-message" [hidden]="myForm.controls.firstName.valid || !myForm.controls.firstName.touched">
+                        First name is mandatory!
+                    </p>
+            </div>
+        <br>
+    </div>
+
+    <!-- Last Name -->
+    <div class="form-group">
+        <span><label class="col-sm-4 control-label-container control-label">LAST NAME:&nbsp; </label></span>
+            <div class="form-control-container"> 
+                <input class="col-sm-12 form-control" type="text" formControlName="lastName" #lastName>
+                    <p class="error-message" [hidden]="myForm.controls.lastName.valid || !myForm.controls.lastName.touched">
+                        Last name is mandatory!
+                    </p>
+            </div>
+        <br>
+    </div>
+
+    <!-- Proffesion -->
+    <div class="form-group">
+        <span><label class="col-sm-4 control-label-container control-label">PROFFESION:&nbsp; </label></span>
+            <div class="form-control-container"> 
+                <input class="col-sm-12 form-control" type="text" formControlName="proffesion">
+                    <p class="error-message" [hidden]="myForm.controls.proffesion.valid || !myForm.controls.proffesion.touched">
+                        Proffession is mandatory!
+                    </p>
+            </div>
+        <br>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+        <span><label class="col-sm-4 control-label-container control-label">EMAIL:&nbsp; </label></span>
+            <div class="form-control-container"> 
+                <input class="col-sm-12 form-control" type="text" formControlName="email">
+                    <p class="error-message" [hidden]="myForm.controls.email.valid || !myForm.controls.email.touched">
+                        Please enter a valid email!
+                    </p>
+            </div>
+        <br>
+    </div>
+
+    <!-- Contact No -->
+    <div class="form-group">
+        <span><label class="col-sm-4 control-label-container control-label">CONTACT NO:&nbsp; </label></span>
+            <div class="form-control-container"> 
+                <input class="col-sm-12 form-control" type="tel" formControlName="contactNumber">
+                    <p class="error-message" [hidden]="myForm.controls.contactNumber.valid || !myForm.controls.contactNumber.touched">
+                        Please enter a valid contact number! Ex. +9174********
+                    </p>
+            </div>
+        <br>
+    </div>
+
+    <!-- Address -->
+    <div class="form-group">
+        <span><label class="col-sm-4 control-label-container control-label">ADDRESS:&nbsp; </label></span>
+            <div class="form-control-container"> 
+                <input class="col-sm-12 form-control" type="text" formControlName="address">
+                    <p class="error-message" [hidden]="myForm.controls.address.valid || !myForm.controls.address.touched">
+                        Address is mandatory!
+                    </p>
+            </div>
+        <br>
+    </div>
+
+    <!-- Gender -->
+    <div class="form-group">
+        <span><label class="col-sm-4 control-label-container control-label">GENDER:&nbsp; </label></span>
+            <div class="col-sm-6 form-control-container">
+                <label><input type="radio" name="gender" value="male" formControlName="gender"> &nbsp;Male</label>&nbsp;&nbsp;
+                <label><input type="radio" name="gender" value="female" formControlName="gender"> &nbsp;Female</label>&nbsp;&nbsp;
+                <label><input type="radio" name="gender" value="other" formControlName="gender"> &nbsp;Other</label>&nbsp;&nbsp;
+            </div>
+                <p class="error-message" [hidden]="myForm.controls.gender.valid || !myForm.controls.gender.touched">
+                    Gender is mandatory!
+                </p>
+        <br>
+    </div>
+    
+    <!-- Age -->
+    <div class="form-group">
+        <span><label class="col-sm-4 control-label-container control-label">AGE:&nbsp; </label></span>
+            <div class="form-control-container">    
+            <input class="col-sm-12 form-control" type="number" formControlName="age">
+                    <p class="error-message" [hidden]="myForm.controls.age.valid || !myForm.controls.age.touched">
+                        Please provide a valid age in years!
+                    </p>
+            </div>
+        <br>
+    </div>
+
+    <!-- Question: ARE YOU COMFORTABLE CONVERSATING WITH OPPOSITE GENDER TUTOR
+                        THROUGHOUT THE COURSE? -->
+    <div class="form-group">
+        <span><label class="col-sm-4 control-label-container control-label">ARE YOU COMFORTABLE CONVERSATING WITH OPPOSITE GENDER TUTOR
+                        THROUGHOUT THE COURSE?&nbsp;</label></span>
+                        <div class="col-sm-6 form-control-container">
+                            <label><input type="radio" name="isComfortableWithOppositeGender" value="yes" formControlName="isComfortableWithOppositeGender">&nbsp; Yes</label>&nbsp;&nbsp;
+                            <label><input type="radio" name="isComfortableWithOppositeGender" value="no" formControlName="isComfortableWithOppositeGender">&nbsp; No</label>&nbsp;&nbsp;
+                        </div>
+                        <p class="error-message" [hidden]="myForm.controls.isComfortableWithOppositeGender.valid || !myForm.controls.isComfortableWithOppositeGender.touched">
+                            Please provide an answer!
+                        </p>
+        <br>
+    </div>
+
+    <!-- Question: WHERE DID YOU HEAR ABOUT US?  -->
+    <div class="form-group">
+        <span><label class="col-sm-4 control-label-container control-label">WHERE DID YOU HEAR ABOUT US?&nbsp; </label></span>
+            <div class="form-control-container">
+                <input class="col-sm-12 form-control" type="text" formControlName="referredFrom">
+                    <p class="error-message" [hidden]="myForm.controls.referredFrom.valid || !myForm.controls.referredFrom.touched">
+                        <!-- No validation added -->
+                    </p>
+            </div>
+        <br>
+    </div>
+
+    <!-- Promo Code -->
+    <div class="form-group">
+        <span><label class="col-sm-4 control-label-container control-label">PROMO CODE:&nbsp; </label></span>
+            <div class="form-control-container">    
+                <input class="col-sm-12 form-control" type="text" formControlName="promoCode">
+                    <p class="error-message" [hidden]="myForm.controls.promoCode.errors?.promoCodeValidation || myForm.controls.promoCode.value == ''">
+                        <!-- Currently no validations -->
+                        Invalid promo code!
+                    </p>
+            </div>
+        <br>
+    </div>
+
+    <!-- Purpose of joining this course -->
+    <div class="form-group">
+        <span><label class="col-sm-4 control-label-container control-label">PRUPOSE OF JOINING THIS COURSE:&nbsp; </label></span>
+            <div class="form-control-container">
+                <input class="col-sm-12 form-control" type="text" formControlName="purpose">
+                    <p class="error-message" [hidden]="myForm.controls.purpose.valid || !myForm.controls.purpose.touched">
+                        Please let us know your purpose of joining this course!
+                    </p>
+            </div>
+        <br>
+    </div>
+    <br>
+
+    <!-- Declaration -->
+    <div class="form-group control-label-container">
+        <input type="checkbox" formControlName="isDeclarationAccepted">&nbsp;
+        <span><label>I, {{ firstName.value }}&nbsp;{{ lastName.value }}, have read and understood the terms and conditions of this
+            course. </label></span>
+                    <p class="error-message" [hidden]="myForm.controls.isDeclarationAccepted.valid || !myForm.controls.isDeclarationAccepted.touched">
+                        Please read and accept the terms and conditions!
+                    </p>
+        <br>
+    </div>
+ 
+    <!-- Submit Button -->
+    <div class="form-group control-label-container">
+        <button type="submit" [disabled]="!myForm.valid || !myForm.controls.isDeclarationAccepted.value">Register</button>
+    </div>
+
+</form>
+</div>
