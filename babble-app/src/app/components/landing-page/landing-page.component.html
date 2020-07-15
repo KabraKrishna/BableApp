@@ -53,7 +53,7 @@
                 <div class="content-button" (click)="scrollToElement(intro)">
                     Get Started
                 </div>&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="content-button">
+                <div class="content-button" (click)="onRegisterCalled()">
                     Register Now
                 </div>
             </div>
@@ -172,7 +172,7 @@
 
 </section>
 
-<section #team class="container-section" style="height: 80vh;">
+<section #team class="container-section" style="height: 90vh;">
 
     <div class="row-top team-col">
 
@@ -184,18 +184,20 @@
         </div>
 
         
-        <div class="body-col team-member" *ngFor="let teamMember of appTeam">
-
-            <div class="card">
-                <div class="card-header">
-                    Header
+        <div class="body-col team-member" *ngFor="let member of appTeam">
+            
+            <div class="card profile-detail">
+                <div class="profile-image">
+                    <img [src]="member.image" width="230">
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{teamMember.name}}</h5>
-                    <p class="card-text">Content</p>
+                    <h3></h3>
+                    <h3 class="card-title">{{member.name}}</h3>
+                    <h5 class="card-text">{{member.role}}</h5>
                 </div>
                 <div class="card-footer">
-                    Footer
+                   <a href="https://www.linkedin.com/in/{{member.linkidin}}"><img src="../../../assets/icons/linkedin.png" width="28"></a> 
+                    &nbsp;&nbsp;<h5>{{member.linkidin}}</h5>
                 </div>
             </div>
 

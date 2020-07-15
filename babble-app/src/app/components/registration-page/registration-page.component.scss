@@ -24,3 +24,115 @@
     color:red;
     padding-top: 1%;
   }
+
+
+
+
+
+
+
+  .form-section-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 750px;
+    min-height: 90vh ;
+    margin: 10px auto;
+  }
+
+  .form-section-container .card{
+    margin-top: 40px;
+    position: relative;
+    overflow: visible;
+    border: 1px solid #000;
+  }
+
+  .form-section-container .card > label{
+    position: absolute;
+    content: '';
+    top: -18px;
+    left: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background-color: #fff;
+    display: inline-block;
+  }
+   .card-body{
+    position: relative;
+    margin-top: 40px;
+  }
+
+  .form-group{
+    position: relative;
+    overflow: visible;
+  }
+  .form-group > p{
+    position: relative;
+    margin-top: -6px;
+    margin-left: 10px;
+  }
+  .form-group > input{
+    overflow: visible;
+  }
+  input::placeholder{
+    opacity: 0;
+  }
+  .form-group > input:focus{
+    border: 1.5px solid rgb(58, 94, 255);
+    box-shadow: none;
+  }
+  .form-group > label {
+    position: absolute;
+    display: inline-block;
+    content: '';
+    top: 6px;
+    left: 20px;
+    font-weight: 600;
+    background-color: #fff;
+  }
+  input:focus + label{
+    transform: translate(-10px,-20px);
+    color: rgb(58, 94, 255);
+    transition: all 0.3s ease-in-out;
+  }
+  .focused-input-valid{
+    border: 1.5px solid green;
+  }
+  .focused-input-invalid{
+    border: 1.5px solid red;
+  }
+  .focused-label-valid{
+    transform: translate(-10px,-20px);
+    color: green;
+    transition: all 0.3s ease-in-out;
+  }
+  .focused-label{
+    transform: translate(-10px,-20px);
+    transition: all 0.3s ease-in-out;
+  }
+  .focused-label-invalid{
+    transform: translate(-10px,-20px);
+    color: red;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .card-body{
+    overflow: hidden;
+  }
+
+  .display-none{
+    display: none;
+  }
+
+// Tablet View
+
+@media screen and (max-width: 767px){
+
+}
+
+// Mobile View
+
+@media screen and (max-width: 575px){
+
+}

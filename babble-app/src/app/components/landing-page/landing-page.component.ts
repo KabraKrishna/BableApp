@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { TeamBabbleApp } from "./babbleapp-team";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
@@ -21,7 +22,8 @@ export class LandingPageComponent implements OnInit, OnChanges {
   appTeam: any = [];
   teamBabbleApp = new TeamBabbleApp();
 
-  constructor(public builder: FormBuilder,){
+  constructor(public builder: FormBuilder,
+    public router: Router){
 
     this.contactForm = this.builder.group({
       name: new FormControl(null,Validators.required),
@@ -51,5 +53,8 @@ export class LandingPageComponent implements OnInit, OnChanges {
     this.displayElememnt.mode = mode;
   }
 
+  onRegisterCalled(){
+    this.router.navigate(['register']);
+  }
 
 }

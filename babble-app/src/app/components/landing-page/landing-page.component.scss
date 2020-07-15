@@ -357,14 +357,58 @@
 }
 .team-col{
     max-width: 98%;
-    min-height: 300px;
-    flex-wrap: nowrap;
+    min-height: 200px;
     margin: 150px auto;
-    overflow-x: auto;
+    padding-bottom: 20px;
+    overflow-x: scroll;
 }
 .team-member{
-    flex: 0 0 20%;
-    margin: 0px 40px;
+    position: relative;
+    align-items: center;
+    min-width: 320px;
+    margin: 0px auto;
+    overflow-x: auto;
+    
+}
+.profile-image{
+    position: relative;
+    margin: 10px auto;
+    z-index: 1;
+}
+.profile-detail{
+    margin: 5px;
+    width: 270px;
+    border-radius: 12px 0 12px 0;
+    background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+    color: #fff;
+    z-index: 0;
+}
+.profile-detail:hover{
+    box-shadow: -2px 2px 8px 1px rgb(0, 0, 0);
+}
+.profile-detail > .card-body{
+    margin-top: -30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-title{
+    border-bottom: 1px solid #fff;
+}
+.profile-detail > .card-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+
+    & h5{
+        font-size: 1rem;
+        margin-left: 5px;
+    }
+    & a:hover{
+        transform: scale(1.5);
+    }
 }
 // Tablet View
 

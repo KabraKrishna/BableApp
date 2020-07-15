@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { promoCodeValidator } from './promocode.validator';
 import { User } from './user';
+import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
+
+const DEFAULT_DURATION = 300;
 
 @Component({
   selector: 'app-registration-page',
@@ -10,12 +13,13 @@ import { User } from './user';
 })
 export class RegistrationPageComponent implements OnInit {
 
-  
 
   constructor() { }
 
   //TODO: Pass promo code from database here
-  promocode: string = 'BABBLE88'
+  promocode: string = 'BABBLE88';
+
+  elemArray = [true,true,true];
 
   user = new User();
   myForm = new FormGroup({
@@ -24,8 +28,8 @@ export class RegistrationPageComponent implements OnInit {
     email: new FormControl('', [Validators.email, Validators.required]),
     age: new FormControl('', [Validators.required, Validators.min(1)]),
     proffesion: new FormControl('', Validators.required),
-    contactNumber: new FormControl('', Validators.pattern("^[+][0-9]*$")),
-    address: new FormControl(''),
+    contactNumber: new FormControl('',[Validators.pattern("^[+][0-9]*$"), Validators.required]),
+    address: new FormControl('', Validators.required),
     gender: new FormControl('', Validators.required),
     isComfortableWithOppositeGender: new FormControl('', Validators.required),
     referredFrom: new FormControl(''),
@@ -55,6 +59,15 @@ export class RegistrationPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  isInvalid(control: AbstractControl): boolean {
+    return (control.touched && control.invalid);
+  }
+
+  isValid(control: AbstractControl): boolean {
+    return (control.touched && control.valid);
+  }
+
 
 
 }
