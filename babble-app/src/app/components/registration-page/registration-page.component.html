@@ -259,24 +259,24 @@
                 <div class="form-group">
                     <div class="row">
                         <!-- Gender -->
-                        <div class="col-12 col-lg-6">
+                        <div class="col-12 col-lg-6" id="genCol">
 
                             <div class="input-group">
                                 <span class="input-group-text">Gender</span>&nbsp;&nbsp;
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gender" value="male"
                                         formControlName="gender">
-                                    <label class="form-check-label">Male</label>
+                                    <span class="form-check-label">Male</span>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gender" value="female"
                                         formControlName="gender">
-                                    <label class="form-check-label">Female</label>
+                                    <span class="form-check-label">Female</span>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gender" value="other"
                                         formControlName="gender">
-                                    <label class="form-check-label">Other</label>
+                                    <span class="form-check-label">Other</span>
                                 </div>
 
                             </div>
@@ -381,7 +381,7 @@
                     </div>
                     <div class="row">
                         <div class="col col-lg-3">
-                            <div class="input-group">
+                            <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
                                         <input type="radio" name="isComfortableWithOppositeGender" value="yes"
@@ -397,7 +397,7 @@
                         </div>
 
                         <div class="col col-lg-3">
-                            <div class="input-group">
+                            <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
                                         <input type="radio" name="isComfortableWithOppositeGender" value="No"
@@ -412,8 +412,8 @@
                             </div>
                         </div>
 
-                        <div class="col col-lg-3">
-                            <div class="input-group">
+                        <div class="col-5 col-lg-3">
+                            <div class="input-group input-group-sm">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
                                         <input type="radio" name="isComfortableWithOppositeGender" value="May be"
@@ -482,7 +482,7 @@
                         </label>
                     </div>
                     <div class="row">
-                        <div class="col-lg-2 col-3 py-2 px-auto" *ngFor="let slot of timeSlotArray">
+                        <div class="col-lg-2 col-4 py-2 px-auto" *ngFor="let slot of timeSlotArray">
                             <button class="btn btn-sm btn-block" type="button" [disabled] = "slot.isAvailable ? slot.isBooked : true"
                                 [ngClass]="{'btn-outline-success': slot.isAvailable ? !slot.isBooked : false, 
                                             'btn-danger': slot.isAvailable ? slot.isBooked : false,
