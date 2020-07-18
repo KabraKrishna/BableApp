@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup, AbstractControl } from '@angular/forms';
-import { promoCodeValidator } from '../registration-page/promocode.validator';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 @Component({
   selector: 'app-tutor-enquiry-page',
@@ -9,18 +9,18 @@ import { promoCodeValidator } from '../registration-page/promocode.validator';
 })
 export class TutorEnquiryPageComponent implements OnInit {
 
-  myForm: FormGroup;
-  isSelectedSlot:number = 0;
+  tutorEnquiryForm: FormGroup;
+  isSelectedSlot: number = 0;
 
-  constructor(private builder: FormBuilder) {
+  constructor(private builder: FormBuilder, private db: AngularFireDatabase) {
 
-    this.myForm = this.builder.group({
+    this.tutorEnquiryForm = this.builder.group({
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.email, Validators.required]),
       age: new FormControl('', [Validators.required, Validators.min(1)]),
-      proffesion: new FormControl('', Validators.required),
-      contactNumber: new FormControl('', [Validators.pattern("^[+][0-9]*$"), Validators.required]),
+      profession: new FormControl('', Validators.required),
+      contactNumber: new FormControl('', [Validators.pattern("^[0-9]*$"), Validators.minLength(10), Validators.maxLength(10), Validators.required]),
       address: new FormControl('', Validators.required),
       gender: new FormControl('', Validators.required),
       timeSlot: 0,
@@ -39,29 +39,33 @@ export class TutorEnquiryPageComponent implements OnInit {
     return (control.touched && control.valid);
   }
 
-  selectTimeSlot(slot: number){
-    this.myForm.controls.timeSlot.setValue(slot);
+  selectTimeSlot(slot: number) {
+    this.tutorEnquiryForm.controls.timeSlot.setValue(slot);
     this.isSelectedSlot = slot;
   }
 
   submitForm() {
     console.log("Submitted!");
-    console.log("Details:");
-    console.log("firstName: " + this.myForm.controls.firstName.value);
-    console.log("lastName: " + this.myForm.controls.lastName.value);
-    console.log("email: " + this.myForm.controls.email.value);
-    console.log("age: " + this.myForm.controls.age.value);
-    console.log("proffesion: " + this.myForm.controls.proffesion.value);
-    console.log("contactNumber: " + this.myForm.controls.contactNumber.value);
-    console.log("address: " + this.myForm.controls.address.value);
-    console.log("gender: " + this.myForm.controls.gender.value);
-    console.log("isComfortableWithOppositeGender: " + this.myForm.controls.isComfortableWithOppositeGender.value);
-    console.log("referredFrom: " + this.myForm.controls.referredFrom.value);
-    console.log('timeSlot: ', this.myForm.controls.timeSlot.value);
-    console.log("promoCode: " + this.myForm.controls.promoCode.value);
-    console.log("purpose: " + this.myForm.controls.purpose.value);
-    console.log("isDeclarationAccepted: " + this.myForm.controls.isDeclarationAccepted.value);
+    if (this.tutorEnquiryForm.controls.firstName.value != "" && this.tutorEnquiryForm.controls.email.value != "" && this.tutorEnquiryForm.controls.contactNumber.value != "") {
+      this.db.database.ref('/tutorEnquiry/' + Date.now()).set(({
+        firstName: this.tutorEnquiryForm.controls.firstName.value,
+        lastName: this.tutorEnquiryForm.controls.lastName.value,
+        email: this.tutorEnquiryForm.controls.email.value,
+        age: this.tutorEnquiryForm.controls.age.value,
+        profession: this.tutorEnquiryForm.controls.profession.value,
+        contactNumber: this.tutorEnquiryForm.controls.contactNumber.value,
+        address: this.tutorEnquiryForm.controls.address.value,
+        gender: this.tutorEnquiryForm.controls.gender.value,
+        isComfortableWithOppositeGender: this.tutorEnquiryForm.controls.isComfortableWithOppositeGender.value,
+        referredFrom: this.tutorEnquiryForm.controls.referredFrom.value,
+        purpose: this.tutorEnquiryForm.controls.purpose.value,
+        isDeclarationAccepted: this.tutorEnquiryForm.controls.isDeclarationAccepted.value
+      }));
 
+      this.tutorEnquiryForm.reset();
+      window.scrollTo(0, 0);
+    } else {
+      console.log("Data Missing!");
+    }
   }
-
 }

@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, resolveForwardRef } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { FormGroup, FormControl, Validators, AbstractControl, FormBuilder } from '@angular/forms';
 import { promoCodeValidator } from './promocode.validator';
 import { User } from './user';
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
 
-const DEFAULT_DURATION = 300;
-
 export interface TimeSlotModel {
+  id: number,
   slot: string,
   isBooked: boolean,
-  isAvailable: boolean
+  isAvailable: boolean,
+  count: number
 }
 
 @Component({
@@ -27,18 +27,22 @@ export class RegistrationPageComponent implements OnInit {
   elemArray = [true, true, true];
 
   user = new User();
-  myForm: FormGroup;
+  userRegistration: FormGroup;
   isSelectedSlot: TimeSlotModel = null;
 
-  constructor(private builder: FormBuilder, private db: AngularFireDatabase) {
+  constructor(private builder: FormBuilder, private db: AngularFireDatabase, private cd: ChangeDetectorRef) {
 
-    this.myForm = this.builder.group({
+    this.getTimeSlots().then((res: boolean) => {
+      if(res)
+        cd.detectChanges();
+    });
+    this.userRegistration = this.builder.group({
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.email, Validators.required]),
       age: new FormControl('', [Validators.required, Validators.min(1)]),
-      proffesion: new FormControl('', Validators.required),
-      contactNumber: new FormControl('', [Validators.pattern("^[+][0-9]*$"), Validators.required]),
+      profession: new FormControl('', Validators.required),
+      contactNumber: new FormControl('', [Validators.pattern("^[0-9]*$"), Validators.minLength(10), Validators.maxLength(10), Validators.required]),
       address: new FormControl('', Validators.required),
       gender: new FormControl('', Validators.required),
       isComfortableWithOppositeGender: new FormControl('', Validators.required),
@@ -48,92 +52,64 @@ export class RegistrationPageComponent implements OnInit {
       purpose: new FormControl('', Validators.required),
       isDeclarationAccepted: new FormControl('', Validators.required),
     })
-
-
-    let hourS: number = 11;
-    let minS: number = 0;
-    let hourE: number = 20;
-    let minE: number = 0;
-    this.timeSlotArray = this.getTimeSlotsBetween(hourS, minS, hourE, minE);
   }
 
-  getTimeSlotsBetween(hourS: number, minS: number, hourE: number, minE: number): any {
-    let slotArray: TimeSlotModel[] = [];
-    let start = hourS;
-    while (start < hourE) {
-
-      for (let min = 0; min <= 60; min = min + 20) {
-
-        let slotObject: TimeSlotModel = null;
-        let slot: string;
-        let book: boolean = false;
-        let available: boolean = true;
-        if (min === 60) {
-          start = start + 1;
-        }
-        if (start < 12) {
-          slot = min === 60 || min === 0 ? start + ':' + '00' + ' AM' : start + ':' + min + ' AM';
-          book = true;
-        } else if (start === 12) {
-          slot = min === 60 || min === 0 ? start + ':' + '00' + ' PM' : start + ':' + min + ' PM';
-        }
-        else if(start > 12) {
-          slot = min === 60 || min === 0 ? (start - 12) + ':' + '00' + ' PM' : (start - 12) + ':' + min + ' PM';
-          if(start === 13 || start === 14){
-            available = false;
-            book = false;
+  getTimeSlots(): any {
+    return new Promise((resolve, reject) => {
+      this.db.database.ref('/timeSlots/').once('value').then((snapshot) => {
+        for(let entry in snapshot.toJSON()){
+          snapshot.toJSON()[entry].id = entry;
+          this.timeSlotArray.push(snapshot.toJSON()[entry]);
+          if(entry === "10"){
+            console.log("Now resolved.")
+            resolve(true);
           }
         }
-        slotObject = {
-          slot: slot,
-          isBooked: book,
-          isAvailable: available
-        }
-        slotArray.push(slotObject);
-        console.log("Slot: ", slot);
-
-      }
-    }
-    return slotArray;
+      })
+      
+    })
   }
 
   selectTimeSlot(slot: TimeSlotModel) {
-    this.myForm.controls.timeSlot.setValue(slot.slot);
+    this.userRegistration.controls.timeSlot.setValue(slot.id);
+    console.log(slot.id)
     this.isSelectedSlot = slot;
   }
 
-
   submitForm() {
-    console.log("Submitted!");
-    console.log("firstName: "+this.myForm.controls.firstName.value);
-    console.log("lastName: "+this.myForm.controls.lastName.value);
-    console.log("email: "+this.myForm.controls.email.value);
-    console.log("age: "+this.myForm.controls.age.value);
-    console.log("proffesion: "+this.myForm.controls.proffesion.value);
-    console.log("contactNumber: "+this.myForm.controls.contactNumber.value);
-    console.log("address: "+this.myForm.controls.address.value);
-    console.log("gender: "+this.myForm.controls.gender.value);
-    console.log("isComfortableWithOppositeGender: "+this.myForm.controls.isComfortableWithOppositeGender.value);
-    console.log("referredFrom: "+this.myForm.controls.referredFrom.value);
-    console.log("promoCode: "+this.myForm.controls.promoCode.value);
-    console.log("purpose: "+this.myForm.controls.purpose.value);
-    console.log("isDeclarationAccepted: "+this.myForm.controls.isDeclarationAccepted.value);
-    if (this.myForm.controls.firstName.value != "" && this.myForm.controls.email.value != "" && this.myForm.controls.contactNumber.value != "") {
-      this.db.database.ref('/users').set(({
-        firstName: this.myForm.controls.firstName.value,
-        lastName: this.myForm.controls.lastName.value,
-        email: this.myForm.controls.email.value,
-        age: this.myForm.controls.age.value,
-        profession: this.myForm.controls.proffesion.value,
-        contactNumber: this.myForm.controls.contactNumber.value,
-        address: this.myForm.controls.address.value,
-        gender: this.myForm.controls.gender.value,
-        isComfortableWithOppositeGender: this.myForm.controls.isComfortableWithOppositeGender.value,
-        referredFrom: this.myForm.controls.referredFrom.value,
-        promoCode: this.myForm.controls.promoCode.value,
-        purpose: this.myForm.controls.purpose.value,
-        isDeclarationAccepted: this.myForm.controls.isDeclarationAccepted.value,
-      }));
+    if (this.userRegistration.controls.firstName.value != "" && this.userRegistration.controls.email.value != "" && this.userRegistration.controls.contactNumber.value != "" && this.userRegistration.controls.timeSlot) {
+      if(this.isSelectedSlot.count < 3){
+        this.isSelectedSlot.count++;
+        if(this.isSelectedSlot.count == 3){
+          this.isSelectedSlot.isAvailable = false;
+        }
+      }
+      
+      this.db.database.ref('/timeSlots/' + this.isSelectedSlot.id).update(this.isSelectedSlot).then(() => {
+        this.db.database.ref('/users/' + Date.now()).set(({
+          firstName: this.userRegistration.controls.firstName.value,
+          lastName: this.userRegistration.controls.lastName.value,
+          email: this.userRegistration.controls.email.value,
+          age: this.userRegistration.controls.age.value,
+          slotTime: this.isSelectedSlot.slot,
+          profession: this.userRegistration.controls.profession.value,
+          contactNumber: this.userRegistration.controls.contactNumber.value,
+          address: this.userRegistration.controls.address.value,
+          gender: this.userRegistration.controls.gender.value,
+          isComfortableWithOppositeGender: this.userRegistration.controls.isComfortableWithOppositeGender.value,
+          referredFrom: this.userRegistration.controls.referredFrom.value,
+          promoCode: this.userRegistration.controls.promoCode.value,
+          purpose: this.userRegistration.controls.purpose.value,
+          isDeclarationAccepted: this.userRegistration.controls.isDeclarationAccepted.value
+        }));
+        this.userRegistration.reset();
+        window.scrollTo(0, 0);
+      }).then(() => {
+        let index = this.timeSlotArray.findIndex((timeSlotObject) => {
+          return timeSlotObject.id === this.isSelectedSlot.id;
+        });
+        this.timeSlotArray[index] = this.isSelectedSlot;
+      });
     } else {
       console.log("Data Missing!");
     }
@@ -150,10 +126,8 @@ export class RegistrationPageComponent implements OnInit {
     return (control.touched && control.valid);
   }
 
-  validatePromoCode(control: AbstractControl){
+  validatePromoCode(control: AbstractControl) {
     this.isPromoCodeValid = control.value === this.promocode;
   }
-
-
 
 }

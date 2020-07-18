@@ -1,7 +1,7 @@
 
 <!-- Form -->
 <div class="form-container" style="display: none">
-    <form class="form-horizontal" [formGroup]="myForm" (ngSubmit)="submitForm()">
+    <form class="form-horizontal" [formGroup]="userRegistration" (ngSubmit)="submitForm()">
 
         <!-- First Name -->
         <div class="form-group">
@@ -9,7 +9,7 @@
             <div class="form-control-container">
                 <input class="col-sm-12 form-control" type="text" formControlName="firstName" #firstName>
                 <p class="error-message"
-                    [hidden]="myForm.controls.firstName.valid || !myForm.controls.firstName.touched">
+                    [hidden]="userRegistration.controls.firstName.valid || !userRegistration.controls.firstName.touched">
                     First name is mandatory!
                 </p>
             </div>
@@ -21,21 +21,21 @@
             <span><label class="col-sm-4 control-label-container control-label">LAST NAME:&nbsp; </label></span>
             <div class="form-control-container">
                 <input class="col-sm-12 form-control" type="text" formControlName="lastName" #lastName>
-                <p class="error-message" [hidden]="myForm.controls.lastName.valid || !myForm.controls.lastName.touched">
+                <p class="error-message" [hidden]="userRegistration.controls.lastName.valid || !userRegistration.controls.lastName.touched">
                     Last name is mandatory!
                 </p>
             </div>
             <br>
         </div>
 
-        <!-- Proffesion -->
+        <!-- profession -->
         <div class="form-group">
-            <span><label class="col-sm-4 control-label-container control-label">PROFFESION:&nbsp; </label></span>
+            <span><label class="col-sm-4 control-label-container control-label">profession:&nbsp; </label></span>
             <div class="form-control-container">
-                <input class="col-sm-12 form-control" type="text" formControlName="proffesion">
+                <input class="col-sm-12 form-control" type="text" formControlName="profession">
                 <p class="error-message"
-                    [hidden]="myForm.controls.proffesion.valid || !myForm.controls.proffesion.touched">
-                    Proffession is mandatory!
+                    [hidden]="userRegistration.controls.profession.valid || !userRegistration.controls.profession.touched">
+                    Profession is mandatory!
                 </p>
             </div>
             <br>
@@ -46,7 +46,7 @@
             <span><label class="col-sm-4 control-label-container control-label">EMAIL:&nbsp; </label></span>
             <div class="form-control-container">
                 <input class="col-sm-12 form-control" type="text" formControlName="email">
-                <p class="error-message" [hidden]="myForm.controls.email.valid || !myForm.controls.email.touched">
+                <p class="error-message" [hidden]="userRegistration.controls.email.valid || !userRegistration.controls.email.touched">
                     Please enter a valid email!
                 </p>
             </div>
@@ -59,7 +59,7 @@
             <div class="form-control-container">
                 <input class="col-sm-12 form-control" type="tel" formControlName="contactNumber">
                 <p class="error-message"
-                    [hidden]="myForm.controls.contactNumber.valid || !myForm.controls.contactNumber.touched">
+                    [hidden]="userRegistration.controls.contactNumber.valid || !userRegistration.controls.contactNumber.touched">
                     Please enter a valid contact number! Ex. +9174********
                 </p>
             </div>
@@ -71,7 +71,7 @@
             <span><label class="col-sm-4 control-label-container control-label">ADDRESS:&nbsp; </label></span>
             <div class="form-control-container">
                 <input class="col-sm-12 form-control" type="text" formControlName="address">
-                <p class="error-message" [hidden]="myForm.controls.address.valid || !myForm.controls.address.touched">
+                <p class="error-message" [hidden]="userRegistration.controls.address.valid || !userRegistration.controls.address.touched">
                     Address is mandatory!
                 </p>
             </div>
@@ -89,7 +89,7 @@
                 <label><input type="radio" name="gender" value="other" formControlName="gender">
                     &nbsp;Other</label>&nbsp;&nbsp;
             </div>
-            <p class="error-message" [hidden]="myForm.controls.gender.valid || !myForm.controls.gender.touched">
+            <p class="error-message" [hidden]="userRegistration.controls.gender.valid || !userRegistration.controls.gender.touched">
                 Gender is mandatory!
             </p>
             <br>
@@ -100,7 +100,7 @@
             <span><label class="col-sm-4 control-label-container control-label">AGE:&nbsp; </label></span>
             <div class="form-control-container">
                 <input class="col-sm-12 form-control" type="number" formControlName="age">
-                <p class="error-message" [hidden]="myForm.controls.age.valid || !myForm.controls.age.touched">
+                <p class="error-message" [hidden]="userRegistration.controls.age.valid || !userRegistration.controls.age.touched">
                     Please provide a valid age in years!
                 </p>
             </div>
@@ -120,7 +120,7 @@
                         formControlName="isComfortableWithOppositeGender">&nbsp; No</label>&nbsp;&nbsp;
             </div>
             <p class="error-message"
-                [hidden]="myForm.controls.isComfortableWithOppositeGender.valid || !myForm.controls.isComfortableWithOppositeGender.touched">
+                [hidden]="userRegistration.controls.isComfortableWithOppositeGender.valid || !userRegistration.controls.isComfortableWithOppositeGender.touched">
                 Please provide an answer!
             </p>
             <br>
@@ -133,7 +133,7 @@
             <div class="form-control-container">
                 <input class="col-sm-12 form-control" type="text" formControlName="referredFrom">
                 <p class="error-message"
-                    [hidden]="myForm.controls.referredFrom.valid || !myForm.controls.referredFrom.touched">
+                    [hidden]="userRegistration.controls.referredFrom.valid || !userRegistration.controls.referredFrom.touched">
                     <!-- No validation added -->
                 </p>
             </div>
@@ -146,7 +146,7 @@
             <div class="form-control-container">
                 <input class="col-sm-12 form-control" type="text" formControlName="promoCode">
                 <p class="error-message"
-                    [hidden]="myForm.controls.promoCode.errors?.promoCodeValidation || myForm.controls.promoCode.value == ''">
+                    [hidden]="userRegistration.controls.promoCode.errors?.promoCodeValidation || userRegistration.controls.promoCode.value == ''">
                     <!-- Currently no validations -->
                     Invalid promo code!
                 </p>
@@ -160,7 +160,7 @@
                 </label></span>
             <div class="form-control-container">
                 <input class="col-sm-12 form-control" type="text" formControlName="purpose">
-                <p class="error-message" [hidden]="myForm.controls.purpose.valid || !myForm.controls.purpose.touched">
+                <p class="error-message" [hidden]="userRegistration.controls.purpose.valid || !userRegistration.controls.purpose.touched">
                     Please let us know your purpose of joining this course!
                 </p>
             </div>
@@ -175,7 +175,7 @@
                     conditions of this
                     course. </label></span>
             <p class="error-message"
-                [hidden]="myForm.controls.isDeclarationAccepted.valid || !myForm.controls.isDeclarationAccepted.touched">
+                [hidden]="userRegistration.controls.isDeclarationAccepted.valid || !userRegistration.controls.isDeclarationAccepted.touched">
                 Please read and accept the terms and conditions!
             </p>
             <br>
@@ -184,7 +184,7 @@
         <!-- Submit Button -->
         <div class="form-group control-label-container">
             <button type="submit"
-                [disabled]="!myForm.valid || !myForm.controls.isDeclarationAccepted.value">Register</button>
+                [disabled]="!userRegistration.valid || !userRegistration.controls.isDeclarationAccepted.value">Register</button>
         </div>
 
     </form>
@@ -213,7 +213,7 @@
     <!-- <div class="left-top-heading">
     </div> -->
 
-    <form class="w-100 mx-0 my-0 px-0 py-0" [formGroup]="myForm" (ngSubmit)="submitForm()">
+    <form class="w-100 mx-0 my-0 px-0 py-0" [formGroup]="userRegistration" (ngSubmit)="submitForm()">
 
         <div class="card">
             <label>Basic Details</label>
@@ -225,13 +225,13 @@
                             <!-- First Name -->
                             <div class="form-group">
                                 <input class="col-sm-12 form-control" type="text" formControlName="firstName" #firstName
-                                    [ngClass]="{'focused-input-valid': isValid(myForm.controls.firstName),
-                                'focused-input-invalid': isInvalid(myForm.controls.firstName)}">
-                                <label for="First Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.firstName),
-                                    'focused-label-invalid': isInvalid(myForm.controls.firstName)}">
+                                    [ngClass]="{'focused-input-valid': isValid(userRegistration.controls.firstName),
+                                'focused-input-invalid': isInvalid(userRegistration.controls.firstName)}">
+                                <label for="First Name" [ngClass]="{'focused-label-valid': isValid(userRegistration.controls.firstName),
+                                    'focused-label-invalid': isInvalid(userRegistration.controls.firstName)}">
                                     First Name
                                 </label>
-                                <p class="error-message" *ngIf="isInvalid(myForm.controls.firstName)">
+                                <p class="error-message" *ngIf="isInvalid(userRegistration.controls.firstName)">
                                     First name is mandatory!
                                 </p>
                             </div>
@@ -241,13 +241,13 @@
                             <!-- Last Name -->
                             <div class="form-group">
                                 <input class="col-sm-12 form-control" type="text" formControlName="lastName" #lastName
-                                    [ngClass]="{'focused-input-valid': isValid(myForm.controls.lastName),
-                                'focused-input-invalid': isInvalid(myForm.controls.lastName)}">
-                                <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.lastName),
-                                    'focused-label-invalid': isInvalid(myForm.controls.lastName)}">
+                                    [ngClass]="{'focused-input-valid': isValid(userRegistration.controls.lastName),
+                                'focused-input-invalid': isInvalid(userRegistration.controls.lastName)}">
+                                <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(userRegistration.controls.lastName),
+                                    'focused-label-invalid': isInvalid(userRegistration.controls.lastName)}">
                                     Last Name
                                 </label>
-                                <p class="error-message" *ngIf="isInvalid(myForm.controls.lastName)">
+                                <p class="error-message" *ngIf="isInvalid(userRegistration.controls.lastName)">
                                     Last name is mandatory!
                                 </p>
                             </div>
@@ -292,7 +292,7 @@
                                 </div>
                                 <input class="form-control" type="number" formControlName="age">
                             </div>
-                            <p class="error-message" *ngIf="isInvalid(myForm.controls.age)">
+                            <p class="error-message" *ngIf="isInvalid(userRegistration.controls.age)">
                                 Please provide a valid age in years!
                             </p>
                         </div>
@@ -301,14 +301,14 @@
 
                 <!-- Profession  -->
                 <div class="form-group">
-                    <input class="col-sm-12 form-control" type="text" formControlName="proffesion" [ngClass]="{'focused-input-valid': isValid(myForm.controls.proffesion),
-                    'focused-input-invalid': isInvalid(myForm.controls.proffesion)}">
-                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.proffesion),
-                        'focused-label-invalid': isInvalid(myForm.controls.proffesion)}">
-                        Proffession
+                    <input class="col-sm-12 form-control" type="text" formControlName="profession" [ngClass]="{'focused-input-valid': isValid(userRegistration.controls.profession),
+                    'focused-input-invalid': isInvalid(userRegistration.controls.profession)}">
+                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(userRegistration.controls.profession),
+                        'focused-label-invalid': isInvalid(userRegistration.controls.profession)}">
+                        Profession
                     </label>
-                    <p class="error-message" *ngIf="isInvalid(myForm.controls.proffesion)">
-                        Proffession is mandatory!
+                    <p class="error-message" *ngIf="isInvalid(userRegistration.controls.profession)">
+                        Profession is mandatory!
                     </p>
                 </div>
 
@@ -321,13 +321,13 @@
 
                 <!-- Address  -->
                 <div class="form-group">
-                    <input class="col-sm-12 form-control" type="text" formControlName="address" [ngClass]="{'focused-input-valid': isValid(myForm.controls.address),
-                    'focused-input-invalid': isInvalid(myForm.controls.address)}">
-                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.address),
-                        'focused-label-invalid': isInvalid(myForm.controls.address)}">
+                    <input class="col-sm-12 form-control" type="text" formControlName="address" [ngClass]="{'focused-input-valid': isValid(userRegistration.controls.address),
+                    'focused-input-invalid': isInvalid(userRegistration.controls.address)}">
+                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(userRegistration.controls.address),
+                        'focused-label-invalid': isInvalid(userRegistration.controls.address)}">
                         Address
                     </label>
-                    <p class="error-message" *ngIf="isInvalid(myForm.controls.address)">
+                    <p class="error-message" *ngIf="isInvalid(userRegistration.controls.address)">
                         Address is mandatory!
                     </p>
                 </div>
@@ -335,26 +335,26 @@
 
                 <!-- Contact Number  -->
                 <div class="form-group">
-                    <input class="col-sm-12 form-control" type="tel" formControlName="contactNumber" [ngClass]="{'focused-input-valid': isValid(myForm.controls.contactNumber),
-                    'focused-input-invalid': isInvalid(myForm.controls.contactNumber)}">
-                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.contactNumber),
-                        'focused-label-invalid': isInvalid(myForm.controls.contactNumber)}">
-                        ContactNumber
+                    <input class="col-sm-12 form-control" type="tel" formControlName="contactNumber" [ngClass]="{'focused-input-valid': isValid(userRegistration.controls.contactNumber),
+                    'focused-input-invalid': isInvalid(userRegistration.controls.contactNumber)}">
+                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(userRegistration.controls.contactNumber),
+                        'focused-label-invalid': isInvalid(userRegistration.controls.contactNumber)}">
+                        Contact Number
                     </label>
-                    <p class="error-message" *ngIf="isInvalid(myForm.controls.contactNumber)">
-                        Please enter a valid contact number! Ex. +9174********
+                    <p class="error-message" *ngIf="isInvalid(userRegistration.controls.contactNumber)">
+                        Please enter a valid contact number! Ex. 9574********
                     </p>
                 </div>
 
                 <!-- Email -->
                 <div class="form-group">
-                    <input class="col-sm-12 form-control" type="text" formControlName="email" [ngClass]="{'focused-input-valid': isValid(myForm.controls.email),
-                    'focused-input-invalid': isInvalid(myForm.controls.email)}">
-                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.email),
-                        'focused-label-invalid': isInvalid(myForm.controls.email)}">
+                    <input class="col-sm-12 form-control" type="text" formControlName="email" [ngClass]="{'focused-input-valid': isValid(userRegistration.controls.email),
+                    'focused-input-invalid': isInvalid(userRegistration.controls.email)}">
+                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(userRegistration.controls.email),
+                        'focused-label-invalid': isInvalid(userRegistration.controls.email)}">
                         Email
                     </label>
-                    <p class="error-message" *ngIf="isInvalid(myForm.controls.email)">
+                    <p class="error-message" *ngIf="isInvalid(userRegistration.controls.email)">
                         Please enter a valid email!
                     </p>
                 </div>
@@ -374,9 +374,7 @@
                 <div class="form-group">
                     <div class="row mx-auto">
                         <label>
-                            ARE YOU COMFORTABLE CONVERSATING WITH
-                            OPPOSITE GENDER TUTOR
-                            THROUGHOUT THE COURSE?
+                            Are you comfortable conversing with the opposite gender?
                         </label>
                     </div>
                     <div class="row">
@@ -422,14 +420,14 @@
                                 </div>
                                 <div class="input-group-append">
                                     <div class="input-group-text">
-                                        May be
+                                        Maybe
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <p class="error-message"
-                        [hidden]="myForm.controls.isComfortableWithOppositeGender.valid || !myForm.controls.isComfortableWithOppositeGender.touched">
+                        [hidden]="userRegistration.controls.isComfortableWithOppositeGender.valid || !userRegistration.controls.isComfortableWithOppositeGender.touched">
                         Please provide an answer!
                     </p>
                 </div>
@@ -438,14 +436,14 @@
                 <div class="form-group">
                     <div class="row mx-auto">
                         <label>
-                            WHERE DID YOU HEAR ABOUT US?
+                            Where did you hear about us?
                         </label>
                     </div>
                     <div class="row mx-auto">
                         <input class="col-sm-12 form-control" type="text" formControlName="referredFrom">
                     </div>
                     <p class="error-message"
-                        [hidden]="myForm.controls.isComfortableWithOppositeGender.valid || !myForm.controls.isComfortableWithOppositeGender.touched">
+                        [hidden]="userRegistration.controls.isComfortableWithOppositeGender.valid || !userRegistration.controls.isComfortableWithOppositeGender.touched">
                         Please provide an answer!
                     </p>
                 </div>
@@ -454,14 +452,14 @@
                 <div class="form-group">
                     <div class="row mx-auto">
                         <label>
-                            WHAT IS THE PRUPOSE OF JOINING THIS COURSE?
+                            What do you aim to achieve by enrolling for this course?
                         </label>
                     </div>
                     <div class="row mx-auto">
                         <input class="col-sm-12 form-control" type="text" formControlName="purpose">
                     </div>
                     <p class="error-message"
-                        [hidden]="myForm.controls.purpose.valid || !myForm.controls.purpose.touched">
+                        [hidden]="userRegistration.controls.purpose.valid || !userRegistration.controls.purpose.touched">
                         Please let us know your purpose of joining this course!
                     </p>
                 </div>
@@ -509,18 +507,14 @@
                 <div class="form-group">
                     <div class="input-group">
                         <input class="col-sm-12 form-control" type="text" formControlName="promoCode" placeholder="Your Code">
-                        <div class="input-group-append">
-                          <button class="btn btn-primary" type="button"
-                            (click)="validatePromoCode(myForm.controls.promoCode.value)">Apply</button>
-                        </div>
                       </div>
                     <!-- <p class="error-message"
-                        [hidden]="myForm.controls.promoCode.errors?.promoCodeValidation || !isPromoCodeValid">
+                        [hidden]="userRegistration.controls.promoCode.errors?.promoCodeValidation || !isPromoCodeValid">
                         
                         Invalid promo code!
                     </p>
                     <p style="color: green"
-                        [hidden]="myForm.controls.promoCode.errors?.promoCodeValidation || isPromoCodeValid">
+                        [hidden]="userRegistration.controls.promoCode.errors?.promoCodeValidation || isPromoCodeValid">
                         
                         Promo Code Applied Successfully !
                     </p> -->
@@ -529,25 +523,25 @@
         </div>
 
         <div class="card">
-            <label>Self Declarattion</label>
+            <label>Self Declaration</label>
             <div class="card-body">
 
                 <!-- Self Declaration  -->
                 <div class="row mx-auto">
                     <label>
-                        I will strictly follow the professional etiquette and will not misbehave with tutor. If found, BabbleApp has authority to cancel my registration.
+                        I will strictly follow the professional etiquette and will not misbehave with the tutor. If found, BabbleApp has authority to cancel my registration.
                     </label>
                 </div>
                 <div class="row mx-auto">
                     <label>
-                        I {{ firstName.value }}&nbsp;{{ lastName.value }}, have read and understood the terms and conditions of this course.
+                        I have read and understood the terms and conditions of this course.
                     </label>
                 </div>
                 <div class="form-group control-label-container">
                     <input type="checkbox" formControlName="isDeclarationAccepted">&nbsp;
                     <span>I Agree</span>
                     <p class="error-message"
-                        [hidden]="myForm.controls.isDeclarationAccepted.valid || !myForm.controls.isDeclarationAccepted.touched">
+                        [hidden]="userRegistration.controls.isDeclarationAccepted.valid || !userRegistration.controls.isDeclarationAccepted.touched">
                         Please read and accept the terms and conditions!
                     </p>
                     <br>
@@ -558,7 +552,7 @@
         <div class="row my-3">
             <div class="col-lg-3 col-6">
                 <button type="submit" class="btn btn-success btn-block"
-                [disabled]="!myForm.valid || !myForm.controls.isDeclarationAccepted.value">Register</button>
+                [disabled]="!userRegistration.valid || !userRegistration.controls.isDeclarationAccepted.value">Register</button>
             </div>
         </div>
 

@@ -18,10 +18,7 @@
         </div>
     </div>
 
-    <!-- <div class="left-top-heading">
-    </div> -->
-
-    <form class="w-100 mx-0 my-0 px-0 py-0" [formGroup]="myForm" (ngSubmit)="submitForm()">
+    <form class="w-100 mx-0 my-0 px-0 py-0" [formGroup]="tutorEnquiryForm" (ngSubmit)="submitForm()">
 
         <div class="card">
             <label>Basic Details</label>
@@ -33,13 +30,13 @@
                             <!-- First Name -->
                             <div class="form-group">
                                 <input class="col-sm-12 form-control" type="text" formControlName="firstName" #firstName
-                                    [ngClass]="{'focused-input-valid': isValid(myForm.controls.firstName),
-                                'focused-input-invalid': isInvalid(myForm.controls.firstName)}">
-                                <label for="First Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.firstName),
-                                    'focused-label-invalid': isInvalid(myForm.controls.firstName)}">
+                                    [ngClass]="{'focused-input-valid': isValid(tutorEnquiryForm.controls.firstName),
+                                'focused-input-invalid': isInvalid(tutorEnquiryForm.controls.firstName)}">
+                                <label for="First Name" [ngClass]="{'focused-label-valid': isValid(tutorEnquiryForm.controls.firstName),
+                                    'focused-label-invalid': isInvalid(tutorEnquiryForm.controls.firstName)}">
                                     First Name
                                 </label>
-                                <p class="error-message" *ngIf="isInvalid(myForm.controls.firstName)">
+                                <p class="error-message" *ngIf="isInvalid(tutorEnquiryForm.controls.firstName)">
                                     First name is mandatory!
                                 </p>
                             </div>
@@ -49,13 +46,13 @@
                             <!-- Last Name -->
                             <div class="form-group">
                                 <input class="col-sm-12 form-control" type="text" formControlName="lastName" #lastName
-                                    [ngClass]="{'focused-input-valid': isValid(myForm.controls.lastName),
-                                'focused-input-invalid': isInvalid(myForm.controls.lastName)}">
-                                <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.lastName),
-                                    'focused-label-invalid': isInvalid(myForm.controls.lastName)}">
+                                    [ngClass]="{'focused-input-valid': isValid(tutorEnquiryForm.controls.lastName),
+                                'focused-input-invalid': isInvalid(tutorEnquiryForm.controls.lastName)}">
+                                <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(tutorEnquiryForm.controls.lastName),
+                                    'focused-label-invalid': isInvalid(tutorEnquiryForm.controls.lastName)}">
                                     Last Name
                                 </label>
-                                <p class="error-message" *ngIf="isInvalid(myForm.controls.lastName)">
+                                <p class="error-message" *ngIf="isInvalid(tutorEnquiryForm.controls.lastName)">
                                     Last name is mandatory!
                                 </p>
                             </div>
@@ -100,7 +97,7 @@
                                 </div>
                                 <input class="form-control" type="number" formControlName="age">
                             </div>
-                            <p class="error-message" *ngIf="isInvalid(myForm.controls.age)">
+                            <p class="error-message" *ngIf="isInvalid(tutorEnquiryForm.controls.age)">
                                 Please provide a valid age in years!
                             </p>
                         </div>
@@ -109,14 +106,14 @@
 
                 <!-- Profession  -->
                 <div class="form-group">
-                    <input class="col-sm-12 form-control" type="text" formControlName="proffesion" [ngClass]="{'focused-input-valid': isValid(myForm.controls.proffesion),
-                    'focused-input-invalid': isInvalid(myForm.controls.proffesion)}">
-                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.proffesion),
-                        'focused-label-invalid': isInvalid(myForm.controls.proffesion)}">
-                        Proffession
+                    <input class="col-sm-12 form-control" type="text" formControlName="profession" [ngClass]="{'focused-input-valid': isValid(tutorEnquiryForm.controls.profession),
+                    'focused-input-invalid': isInvalid(tutorEnquiryForm.controls.profession)}">
+                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(tutorEnquiryForm.controls.profession),
+                        'focused-label-invalid': isInvalid(tutorEnquiryForm.controls.profession)}">
+                        Profession
                     </label>
-                    <p class="error-message" *ngIf="isInvalid(myForm.controls.proffesion)">
-                        Proffession is mandatory!
+                    <p class="error-message" *ngIf="isInvalid(tutorEnquiryForm.controls.profession)">
+                        Profession is mandatory!
                     </p>
                 </div>
 
@@ -129,13 +126,13 @@
 
                 <!-- Address  -->
                 <div class="form-group">
-                    <input class="col-sm-12 form-control" type="text" formControlName="address" [ngClass]="{'focused-input-valid': isValid(myForm.controls.address),
-                    'focused-input-invalid': isInvalid(myForm.controls.address)}">
-                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.address),
-                        'focused-label-invalid': isInvalid(myForm.controls.address)}">
+                    <input class="col-sm-12 form-control" type="text" formControlName="address" [ngClass]="{'focused-input-valid': isValid(tutorEnquiryForm.controls.address),
+                    'focused-input-invalid': isInvalid(tutorEnquiryForm.controls.address)}">
+                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(tutorEnquiryForm.controls.address),
+                        'focused-label-invalid': isInvalid(tutorEnquiryForm.controls.address)}">
                         Address
                     </label>
-                    <p class="error-message" *ngIf="isInvalid(myForm.controls.address)">
+                    <p class="error-message" *ngIf="isInvalid(tutorEnquiryForm.controls.address)">
                         Address is mandatory!
                     </p>
                 </div>
@@ -143,26 +140,26 @@
 
                 <!-- Contact Number  -->
                 <div class="form-group">
-                    <input class="col-sm-12 form-control" type="tel" formControlName="contactNumber" [ngClass]="{'focused-input-valid': isValid(myForm.controls.contactNumber),
-                    'focused-input-invalid': isInvalid(myForm.controls.contactNumber)}">
-                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.contactNumber),
-                        'focused-label-invalid': isInvalid(myForm.controls.contactNumber)}">
-                        ContactNumber
+                    <input class="col-sm-12 form-control" type="tel" formControlName="contactNumber" [ngClass]="{'focused-input-valid': isValid(tutorEnquiryForm.controls.contactNumber),
+                    'focused-input-invalid': isInvalid(tutorEnquiryForm.controls.contactNumber)}">
+                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(tutorEnquiryForm.controls.contactNumber),
+                        'focused-label-invalid': isInvalid(tutorEnquiryForm.controls.contactNumber)}">
+                        Contact Number
                     </label>
-                    <p class="error-message" *ngIf="isInvalid(myForm.controls.contactNumber)">
-                        Please enter a valid contact number! Ex. +9174********
+                    <p class="error-message" *ngIf="isInvalid(tutorEnquiryForm.controls.contactNumber)">
+                        Please enter a valid contact number! Ex. 9874********
                     </p>
                 </div>
 
                 <!-- Email -->
                 <div class="form-group">
-                    <input class="col-sm-12 form-control" type="text" formControlName="email" [ngClass]="{'focused-input-valid': isValid(myForm.controls.email),
-                    'focused-input-invalid': isInvalid(myForm.controls.email)}">
-                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.email),
-                        'focused-label-invalid': isInvalid(myForm.controls.email)}">
+                    <input class="col-sm-12 form-control" type="text" formControlName="email" [ngClass]="{'focused-input-valid': isValid(tutorEnquiryForm.controls.email),
+                    'focused-input-invalid': isInvalid(tutorEnquiryForm.controls.email)}">
+                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(tutorEnquiryForm.controls.email),
+                        'focused-label-invalid': isInvalid(tutorEnquiryForm.controls.email)}">
                         Email
                     </label>
-                    <p class="error-message" *ngIf="isInvalid(myForm.controls.email)">
+                    <p class="error-message" *ngIf="isInvalid(tutorEnquiryForm.controls.email)">
                         Please enter a valid email!
                     </p>
                 </div>
@@ -182,7 +179,7 @@
                 <div class="form-group">
                     <div class="row mx-auto">
                         <label>
-                            WHERE DID YOU HEAR ABOUT US?
+                            Where did you hear about us?
                         </label>
                     </div>
                     <div class="row mx-auto">
@@ -194,7 +191,7 @@
                 <div class="form-group">
                     <div class="row mx-auto">
                         <label>
-                            How many hours can you dedicate as tutor partner role with us?
+                            How many hours per day can you dedicate in the tutor partner role?
                         </label>
                     </div>
                     <div class="row">
@@ -214,7 +211,7 @@
         <div class="row my-3">
             <div class="col-lg-3 col-6">
                 <button type="submit" class="btn btn-success btn-block"
-                [disabled]="!myForm.valid || !myForm.controls.isDeclarationAccepted.value">Submit</button>
+                [disabled]="!tutorEnquiryForm.valid || !tutorEnquiryForm.controls.isDeclarationAccepted.value">Submit</button>
             </div>
         </div>
 
