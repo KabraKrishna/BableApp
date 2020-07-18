@@ -10,12 +10,14 @@ import { RegistrationPageComponent } from './components/registration-page/regist
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule  } from '@angular/fire/database';
 import { environment } from '../environments/environment';
+import { TutorEnquiryPageComponent } from './components/tutor-enquiry-page/tutor-enquiry-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
-    RegistrationPageComponent
+    RegistrationPageComponent,
+    TutorEnquiryPageComponent
   ],
   imports: [
     BrowserModule,

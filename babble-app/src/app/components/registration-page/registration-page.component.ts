@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { FormGroup, FormControl, Validators, AbstractControl, FormBuilder } from '@angular/forms';
 import { promoCodeValidator } from './promocode.validator';
 import { User } from './user';
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
 
 const DEFAULT_DURATION = 300;
+
+export interface TimeSlotModel {
+  slot: string,
+  isBooked: boolean,
+  isAvailable: boolean
+}
 
 @Component({
   selector: 'app-registration-page',
@@ -14,33 +20,90 @@ const DEFAULT_DURATION = 300;
 })
 export class RegistrationPageComponent implements OnInit {
 
-  constructor(private db: AngularFireDatabase) {
-
-  }
-
   //TODO: Pass promo code from database here
-  promocode: string = 'BABBLE88';
-
-  elemArray = [true,true,true];
+  promocode: string = 'BABBLE10';
+  timeSlotArray: Array<TimeSlotModel> = [];
+  isPromoCodeValid: boolean;
+  elemArray = [true, true, true];
 
   user = new User();
-  myForm = new FormGroup({
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.email, Validators.required]),
-    age: new FormControl('', [Validators.required, Validators.min(1)]),
-    proffesion: new FormControl('', Validators.required),
-    contactNumber: new FormControl('',[Validators.pattern("^[+][0-9]*$"), Validators.required]),
-    address: new FormControl('', Validators.required),
-    gender: new FormControl('', Validators.required),
-    isComfortableWithOppositeGender: new FormControl('', Validators.required),
-    referredFrom: new FormControl(''),
-    promoCode: new FormControl('', promoCodeValidator(this.promocode)),
-    purpose: new FormControl('', Validators.required),
-    isDeclarationAccepted: new FormControl('', Validators.required),  
-  })
+  myForm: FormGroup;
+  isSelectedSlot: TimeSlotModel = null;
 
-  submitForm(){
+  constructor(private builder: FormBuilder, private db: AngularFireDatabase) {
+
+    this.myForm = this.builder.group({
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.email, Validators.required]),
+      age: new FormControl('', [Validators.required, Validators.min(1)]),
+      proffesion: new FormControl('', Validators.required),
+      contactNumber: new FormControl('', [Validators.pattern("^[+][0-9]*$"), Validators.required]),
+      address: new FormControl('', Validators.required),
+      gender: new FormControl('', Validators.required),
+      isComfortableWithOppositeGender: new FormControl('', Validators.required),
+      referredFrom: new FormControl(''),
+      timeSlot: '',
+      promoCode: new FormControl('', promoCodeValidator(this.promocode)),
+      purpose: new FormControl('', Validators.required),
+      isDeclarationAccepted: new FormControl('', Validators.required),
+    })
+
+
+    let hourS: number = 11;
+    let minS: number = 0;
+    let hourE: number = 20;
+    let minE: number = 0;
+    this.timeSlotArray = this.getTimeSlotsBetween(hourS, minS, hourE, minE);
+  }
+
+  getTimeSlotsBetween(hourS: number, minS: number, hourE: number, minE: number): any {
+    let slotArray: TimeSlotModel[] = [];
+    let start = hourS;
+    while (start < hourE) {
+
+      for (let min = 0; min <= 60; min = min + 20) {
+
+        let slotObject: TimeSlotModel = null;
+        let slot: string;
+        let book: boolean = false;
+        let available: boolean = true;
+        if (min === 60) {
+          start = start + 1;
+        }
+        if (start < 12) {
+          slot = min === 60 || min === 0 ? start + ':' + '00' + ' AM' : start + ':' + min + ' AM';
+          book = true;
+        } else if (start === 12) {
+          slot = min === 60 || min === 0 ? start + ':' + '00' + ' PM' : start + ':' + min + ' PM';
+        }
+        else if(start > 12) {
+          slot = min === 60 || min === 0 ? (start - 12) + ':' + '00' + ' PM' : (start - 12) + ':' + min + ' PM';
+          if(start === 13 || start === 14){
+            available = false;
+            book = false;
+          }
+        }
+        slotObject = {
+          slot: slot,
+          isBooked: book,
+          isAvailable: available
+        }
+        slotArray.push(slotObject);
+        console.log("Slot: ", slot);
+
+      }
+    }
+    return slotArray;
+  }
+
+  selectTimeSlot(slot: TimeSlotModel) {
+    this.myForm.controls.timeSlot.setValue(slot.slot);
+    this.isSelectedSlot = slot;
+  }
+
+
+  submitForm() {
     console.log("Submitted!");
     console.log("firstName: "+this.myForm.controls.firstName.value);
     console.log("lastName: "+this.myForm.controls.lastName.value);
@@ -85,6 +148,10 @@ export class RegistrationPageComponent implements OnInit {
 
   isValid(control: AbstractControl): boolean {
     return (control.touched && control.valid);
+  }
+
+  validatePromoCode(control: AbstractControl){
+    this.isPromoCodeValid = control.value === this.promocode;
   }
 
 

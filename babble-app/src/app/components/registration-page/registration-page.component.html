@@ -1,6 +1,3 @@
-<div class="form-title">
-    <h1>REGISTRATION FORM</h1>
-</div>
 
 <!-- Form -->
 <div class="form-container" style="display: none">
@@ -193,9 +190,28 @@
     </form>
 </div>
 
-
-
 <section #registrationForm class="form-section-container">
+
+    <div class="right-top-heading">
+        <div class="heading-text">
+            Registration Form
+        </div>
+    </div>
+
+    <div class="logo-row">
+        <div class="row-top">
+            <div class="logo-col-1">
+                <img src="../../../assets/logo-babbleapp-1.jpg" width="75">
+            </div>
+            <div class="logo-col-2">
+                <span>BABBLE APP</span>
+                <span>Speak&nbsp;|&nbsp;Learn&nbsp;|&nbsp;Grow</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="left-top-heading">
+    </div> -->
 
     <form class="w-100 mx-0 my-0 px-0 py-0" [formGroup]="myForm" (ngSubmit)="submitForm()">
 
@@ -296,23 +312,6 @@
                     </p>
                 </div>
 
-                <!-- Email -->
-                <div class="form-group">
-                    <input class="col-sm-12 form-control" type="text" formControlName="email" [ngClass]="{'focused-input-valid': isValid(myForm.controls.email),
-                    'focused-input-invalid': isInvalid(myForm.controls.email)}">
-                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.email),
-                        'focused-label-invalid': isInvalid(myForm.controls.email)}">
-                        Email
-                    </label>
-                    <p class="error-message" *ngIf="isInvalid(myForm.controls.email)">
-                        Please enter a valid email!
-                    </p>
-                </div>
-
-
-
-
-
             </div>
         </div>
 
@@ -376,8 +375,8 @@
                     <div class="row mx-auto">
                         <label>
                             ARE YOU COMFORTABLE CONVERSATING WITH
-                    OPPOSITE GENDER TUTOR
-                    THROUGHOUT THE COURSE?
+                            OPPOSITE GENDER TUTOR
+                            THROUGHOUT THE COURSE?
                         </label>
                     </div>
                     <div class="row">
@@ -461,7 +460,8 @@
                     <div class="row mx-auto">
                         <input class="col-sm-12 form-control" type="text" formControlName="purpose">
                     </div>
-                    <p class="error-message" [hidden]="myForm.controls.purpose.valid || !myForm.controls.purpose.touched">
+                    <p class="error-message"
+                        [hidden]="myForm.controls.purpose.valid || !myForm.controls.purpose.touched">
                         Please let us know your purpose of joining this course!
                     </p>
                 </div>
@@ -470,28 +470,98 @@
             </div>
         </div>
 
+        <div class="card">
+            <label>Book Your Time Slot</label>
+            <div class="card-body">
+
+                <!-- Time Slot Booking  -->
+                <div class="form-group">
+                    <div class="row mx-auto">
+                        <label>
+                            Select your preferred time slot for 30 Days (Select carefully, once submitted no alteration is possible)
+                        </label>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2 col-3 py-2 px-auto" *ngFor="let slot of timeSlotArray">
+                            <button class="btn btn-sm btn-block" type="button" [disabled] = "slot.isAvailable ? slot.isBooked : true"
+                                [ngClass]="{'btn-outline-success': slot.isAvailable ? !slot.isBooked : false, 
+                                            'btn-danger': slot.isAvailable ? slot.isBooked : false,
+                                            'btn-secondary': !slot.isAvailable }"
+                                [class.active]=" isSelectedSlot ? isSelectedSlot.slot === slot.slot : false"
+                                (click)="selectTimeSlot(slot)"
+                            >{{slot.slot}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="card">
             <label>Promo Code (Optional)</label>
             <div class="card-body">
 
-                <!-- Address  -->
-                <div class="form-group">
-                    <input class="col-sm-12 form-control" type="text" formControlName="promoCode">
+                <!-- PromoCode  -->
+                <div class="row mx-auto">
                     <label>
-                        Your code
+                        Enter your promo code below in order to get offer.
                     </label>
-                    <p class="error-message"
-                    [hidden]="myForm.controls.promoCode.errors?.promoCodeValidation || myForm.controls.promoCode.value == ''">
-                    <!-- Currently no validations -->
-                    Invalid promo code!
-                </p>
                 </div>
-
-
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="col-sm-12 form-control" type="text" formControlName="promoCode" placeholder="Your Code">
+                        <div class="input-group-append">
+                          <button class="btn btn-primary" type="button"
+                            (click)="validatePromoCode(myForm.controls.promoCode.value)">Apply</button>
+                        </div>
+                      </div>
+                    <!-- <p class="error-message"
+                        [hidden]="myForm.controls.promoCode.errors?.promoCodeValidation || !isPromoCodeValid">
+                        
+                        Invalid promo code!
+                    </p>
+                    <p style="color: green"
+                        [hidden]="myForm.controls.promoCode.errors?.promoCodeValidation || isPromoCodeValid">
+                        
+                        Promo Code Applied Successfully !
+                    </p> -->
+                </div>
             </div>
         </div>
-        
+
+        <div class="card">
+            <label>Self Declarattion</label>
+            <div class="card-body">
+
+                <!-- Self Declaration  -->
+                <div class="row mx-auto">
+                    <label>
+                        I will strictly follow the professional etiquette and will not misbehave with tutor. If found, BabbleApp has authority to cancel my registration.
+                    </label>
+                </div>
+                <div class="row mx-auto">
+                    <label>
+                        I {{ firstName.value }}&nbsp;{{ lastName.value }}, have read and understood the terms and conditions of this course.
+                    </label>
+                </div>
+                <div class="form-group control-label-container">
+                    <input type="checkbox" formControlName="isDeclarationAccepted">&nbsp;
+                    <span>I Agree</span>
+                    <p class="error-message"
+                        [hidden]="myForm.controls.isDeclarationAccepted.valid || !myForm.controls.isDeclarationAccepted.touched">
+                        Please read and accept the terms and conditions!
+                    </p>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-3">
+            <div class="col-lg-3 col-6">
+                <button type="submit" class="btn btn-success btn-block"
+                [disabled]="!myForm.valid || !myForm.controls.isDeclarationAccepted.value">Register</button>
+            </div>
+        </div>
+
     </form>
 
 </section>
