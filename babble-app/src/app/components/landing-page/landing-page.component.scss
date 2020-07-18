@@ -185,10 +185,10 @@
 .content-text{
     // margin-top: 32px;
     margin-right: 24px;
-    font-size: 4rem;
+    font-size: 3.5rem;
     color: #fff;
     text-align: end;
-    line-height: 0.9;
+    line-height: 1;
 }
 .content-subtext{
     margin-top: 24px;
@@ -409,6 +409,26 @@
     & a:hover{
         transform: scale(1.5);
     }
+}
+
+.contact-wa{
+    position: fixed;
+    content: '';
+    left: 60px;
+    bottom: 60px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    box-shadow: 1px 1px 8px #000;
+}
+.contact-wa:hover{
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
 }
 // Tablet View
 

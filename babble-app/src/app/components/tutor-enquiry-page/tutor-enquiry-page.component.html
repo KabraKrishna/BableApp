@@ -1,0 +1,223 @@
+<section #registrationForm class="form-section-container">
+
+    <div class="right-top-heading">
+        <div class="heading-text">
+            Tutor Enquiry Form
+        </div>
+    </div>
+
+    <div class="logo-row">
+        <div class="row-top">
+            <div class="logo-col-1">
+                <img src="../../../assets/logo-babbleapp-1.jpg" width="75">
+            </div>
+            <div class="logo-col-2">
+                <span>BABBLE APP</span>
+                <span>Speak&nbsp;|&nbsp;Learn&nbsp;|&nbsp;Grow</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="left-top-heading">
+    </div> -->
+
+    <form class="w-100 mx-0 my-0 px-0 py-0" [formGroup]="myForm" (ngSubmit)="submitForm()">
+
+        <div class="card">
+            <label>Basic Details</label>
+            <div class="card-body">
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <!-- First Name -->
+                            <div class="form-group">
+                                <input class="col-sm-12 form-control" type="text" formControlName="firstName" #firstName
+                                    [ngClass]="{'focused-input-valid': isValid(myForm.controls.firstName),
+                                'focused-input-invalid': isInvalid(myForm.controls.firstName)}">
+                                <label for="First Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.firstName),
+                                    'focused-label-invalid': isInvalid(myForm.controls.firstName)}">
+                                    First Name
+                                </label>
+                                <p class="error-message" *ngIf="isInvalid(myForm.controls.firstName)">
+                                    First name is mandatory!
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6">
+                            <!-- Last Name -->
+                            <div class="form-group">
+                                <input class="col-sm-12 form-control" type="text" formControlName="lastName" #lastName
+                                    [ngClass]="{'focused-input-valid': isValid(myForm.controls.lastName),
+                                'focused-input-invalid': isInvalid(myForm.controls.lastName)}">
+                                <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.lastName),
+                                    'focused-label-invalid': isInvalid(myForm.controls.lastName)}">
+                                    Last Name
+                                </label>
+                                <p class="error-message" *ngIf="isInvalid(myForm.controls.lastName)">
+                                    Last name is mandatory!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="row">
+                        <!-- Gender -->
+                        <div class="col-12 col-lg-6">
+
+                            <div class="input-group">
+                                <span class="input-group-text">Gender</span>&nbsp;&nbsp;
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" value="male"
+                                        formControlName="gender">
+                                    <label class="form-check-label">Male</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" value="female"
+                                        formControlName="gender">
+                                    <label class="form-check-label">Female</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" value="other"
+                                        formControlName="gender">
+                                    <label class="form-check-label">Other</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-12 col-lg-6">
+
+                            <!-- Age -->
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Age</span>
+                                </div>
+                                <input class="form-control" type="number" formControlName="age">
+                            </div>
+                            <p class="error-message" *ngIf="isInvalid(myForm.controls.age)">
+                                Please provide a valid age in years!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profession  -->
+                <div class="form-group">
+                    <input class="col-sm-12 form-control" type="text" formControlName="proffesion" [ngClass]="{'focused-input-valid': isValid(myForm.controls.proffesion),
+                    'focused-input-invalid': isInvalid(myForm.controls.proffesion)}">
+                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.proffesion),
+                        'focused-label-invalid': isInvalid(myForm.controls.proffesion)}">
+                        Proffession
+                    </label>
+                    <p class="error-message" *ngIf="isInvalid(myForm.controls.proffesion)">
+                        Proffession is mandatory!
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <label>Contact Details</label>
+            <div class="card-body">
+
+                <!-- Address  -->
+                <div class="form-group">
+                    <input class="col-sm-12 form-control" type="text" formControlName="address" [ngClass]="{'focused-input-valid': isValid(myForm.controls.address),
+                    'focused-input-invalid': isInvalid(myForm.controls.address)}">
+                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.address),
+                        'focused-label-invalid': isInvalid(myForm.controls.address)}">
+                        Address
+                    </label>
+                    <p class="error-message" *ngIf="isInvalid(myForm.controls.address)">
+                        Address is mandatory!
+                    </p>
+                </div>
+
+
+                <!-- Contact Number  -->
+                <div class="form-group">
+                    <input class="col-sm-12 form-control" type="tel" formControlName="contactNumber" [ngClass]="{'focused-input-valid': isValid(myForm.controls.contactNumber),
+                    'focused-input-invalid': isInvalid(myForm.controls.contactNumber)}">
+                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.contactNumber),
+                        'focused-label-invalid': isInvalid(myForm.controls.contactNumber)}">
+                        ContactNumber
+                    </label>
+                    <p class="error-message" *ngIf="isInvalid(myForm.controls.contactNumber)">
+                        Please enter a valid contact number! Ex. +9174********
+                    </p>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <input class="col-sm-12 form-control" type="text" formControlName="email" [ngClass]="{'focused-input-valid': isValid(myForm.controls.email),
+                    'focused-input-invalid': isInvalid(myForm.controls.email)}">
+                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(myForm.controls.email),
+                        'focused-label-invalid': isInvalid(myForm.controls.email)}">
+                        Email
+                    </label>
+                    <p class="error-message" *ngIf="isInvalid(myForm.controls.email)">
+                        Please enter a valid email!
+                    </p>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+
+        <div class="card">
+            <label>Other Details</label>
+            <div class="card-body">
+
+                <!-- Q1 -->
+                <div class="form-group">
+                    <div class="row mx-auto">
+                        <label>
+                            WHERE DID YOU HEAR ABOUT US?
+                        </label>
+                    </div>
+                    <div class="row mx-auto">
+                        <input class="col-sm-12 form-control" type="text" formControlName="referredFrom">
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="form-group">
+                    <div class="row mx-auto">
+                        <label>
+                            How many hours can you dedicate as tutor partner role with us?
+                        </label>
+                    </div>
+                    <div class="row">
+                        <div class="col-2" *ngFor="let hrs of [1,2,3,4,5,6]">
+                            <button class="btn btn-sm btn-block btn-outline-primary" type="button"
+                                [class.active]=" isSelectedSlot === hrs"
+                                (click)="selectTimeSlot(hrs)"
+                            >{{hrs}}&nbsp; Hour</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="row my-3">
+            <div class="col-lg-3 col-6">
+                <button type="submit" class="btn btn-success btn-block"
+                [disabled]="!myForm.valid || !myForm.controls.isDeclarationAccepted.value">Submit</button>
+            </div>
+        </div>
+
+    </form>
+
+</section>

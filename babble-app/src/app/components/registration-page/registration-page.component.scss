@@ -1,3 +1,6 @@
+:host{
+  font-family: Candara;
+}
 .form-control-container {
     width: 60%;
     height: 60%;
@@ -25,20 +28,107 @@
     padding-top: 1%;
   }
 
+  // Krishna's CSS
 
+  .logo-row{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-height: 200px;
+    max-width: 270px;
+    margin: 10px;
+    align-self: flex-start;
+}
+.row-top{
+    display: flex;
+    flex-direction: row;
+    // align-items: center;
+}
+.logo-col-1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #fff;
+}
+.logo-col-2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.logo-col-2 > span:nth-child(1){
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 900;
+    transform: scaleY(1.5);
+    background: -webkit-linear-gradient(0deg, #ff7c00 10%, #da475f 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.logo-col-2 > span:nth-child(2){
+    width: 100%;
+    text-align: justify;
+    font-size: 1.2rem;
+    font-weight: 800;
+    font-style: italic;
+    // color: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+    // mix-blend-mode: screen;
+    background: -webkit-linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
+.right-top-heading {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 90vh;
+  background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+  clip-path: circle(50% at 65% 17%);
+  z-index: -1;
+}
+.left-top-heading{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40%;
+  height: 70vh;
+  background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+  clip-path: circle(50% at 20% 90%);
+  z-index: -1;
+}
 
-
-
+.heading-text{
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-align: end;
+  color:#fff;
+  padding: 20px 30px;
+}
 
   .form-section-container{
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 750px;
+    width: 55%;
     min-height: 90vh ;
-    margin: 10px auto;
+    margin: 20px auto;
+    padding: 0px 30px;
+  }
+
+  .form-section-container .card:nth-child(1){
+    margin-top: 20px;
+  }
+  .form-section-container .card:nth-child(3){
+    background-color: rgba(255, 255, 255, 0.513);
   }
 
   .form-section-container .card{
