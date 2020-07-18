@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { promoCodeValidator } from './promocode.validator';
 import { User } from './user';
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
@@ -13,8 +14,9 @@ const DEFAULT_DURATION = 300;
 })
 export class RegistrationPageComponent implements OnInit {
 
+  constructor(private db: AngularFireDatabase) {
 
-  constructor() { }
+  }
 
   //TODO: Pass promo code from database here
   promocode: string = 'BABBLE88';
@@ -40,7 +42,6 @@ export class RegistrationPageComponent implements OnInit {
 
   submitForm(){
     console.log("Submitted!");
-    console.log("Details:");
     console.log("firstName: "+this.myForm.controls.firstName.value);
     console.log("lastName: "+this.myForm.controls.lastName.value);
     console.log("email: "+this.myForm.controls.email.value);
@@ -54,7 +55,25 @@ export class RegistrationPageComponent implements OnInit {
     console.log("promoCode: "+this.myForm.controls.promoCode.value);
     console.log("purpose: "+this.myForm.controls.purpose.value);
     console.log("isDeclarationAccepted: "+this.myForm.controls.isDeclarationAccepted.value);
-
+    if (this.myForm.controls.firstName.value != "" && this.myForm.controls.email.value != "" && this.myForm.controls.contactNumber.value != "") {
+      this.db.database.ref('/users').set(({
+        firstName: this.myForm.controls.firstName.value,
+        lastName: this.myForm.controls.lastName.value,
+        email: this.myForm.controls.email.value,
+        age: this.myForm.controls.age.value,
+        profession: this.myForm.controls.proffesion.value,
+        contactNumber: this.myForm.controls.contactNumber.value,
+        address: this.myForm.controls.address.value,
+        gender: this.myForm.controls.gender.value,
+        isComfortableWithOppositeGender: this.myForm.controls.isComfortableWithOppositeGender.value,
+        referredFrom: this.myForm.controls.referredFrom.value,
+        promoCode: this.myForm.controls.promoCode.value,
+        purpose: this.myForm.controls.purpose.value,
+        isDeclarationAccepted: this.myForm.controls.isDeclarationAccepted.value,
+      }));
+    } else {
+      console.log("Data Missing!");
+    }
   }
 
   ngOnInit(): void {
