@@ -224,5 +224,96 @@
   // Mobile View
   
   @media screen and (max-width: 575px){
+
+    .logo-row{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      margin: 10px 0px 5px 5px;
+      background-color: #fff;
+      border-radius: 2px;
+      align-self: flex-start;
+  }
+  .row-top{
+      display: flex;
+      flex-direction: row;
+      // align-items: center;
+  }
+  .logo-col-1{
+    display: flex;
+    flex-direction: column;
+  }
+  .logo-col-1 > img{
+    width: 40px;
+  }
+  .logo-col-2{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0px 2px;
+  }
+  .logo-col-2 > span:nth-child(1){
+    text-align: center;
+    font-size: 1.2rem;
+    transform: scaleY(1.3);
+    font-weight: 700;
+    background: -webkit-linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .logo-col-2 > span:nth-child(2){
+    text-align: justify;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-style: italic;
+    background: -webkit-linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .right-top-heading {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 50vh;
+    background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+    clip-path: circle(50% at 65% 17%);
+    z-index: -1;
+  }
+  
+  .heading-text{
+    font-size: 1.5rem;
+      font-weight: 700;
+      text-align: end;
+      color: #fff;
+      padding: 23px 17px;
+      line-height: 1;
+  }
+  
+    .form-section-container{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      min-height: 90vh ;
+      margin: 0px auto;
+      padding: 0px 10px;
+    }
+  
+    .card-body{
+      position: relative;
+      margin-top: 20px;
+      padding: 10px;
+    }
+  
+    #genCol{
+      margin-bottom: 1rem;
+    }
   
   }

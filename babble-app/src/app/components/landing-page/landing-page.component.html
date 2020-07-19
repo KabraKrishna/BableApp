@@ -1,12 +1,14 @@
-<section #home class="container-section" style="height: 92vh;">
+<header class="hidden-header" style="display: none;"></header>
+<section #home id="home" class="container-section" style="height: 92vh;">
     <!-- [ngClass]="{'hide-section': displayElememnt.mode !== 'home'}" -->
     <div class="right-bottom-video">
         <span></span>
     </div>
 
     <div class="row-top" style="align-items: center;">
+        
         <div class="logo-row">
-            <div class="row-top">
+            <div class="logo-container">
                 <div class="logo-col-1">
                     <img src="../../../assets/logo-babbleapp-1.jpg" width="75">
                 </div>
@@ -16,23 +18,30 @@
                 </div>
             </div>
         </div>
-        <div class="nav-row">
+        <!-- Burger button for smaller devices-->
+        <div class="ham-btn-container" (click)="isMenuOpen = true">
+            <img src="../../../assets/icons/menu.png" width="30">
+        </div>
+        <div class="nav-row" [ngClass]="{'open-menu': isMenuOpen}">
+            <div class="btn close-btn" (click)="isMenuOpen = false">
+                <img src="../../../assets//icons/close.png" alt="close" width="20">
+            </div>
             <div class="nav-col" [class.nav-item-selected]="displayElememnt.mode === 'home'">
-                <a (click)="scrollToElement(home)">HOME</a>
+                <a (click)="scrollToElement(home,'home')">HOME</a>
             </div>
-            <div class="nav-col" [class.nav-item-selected]="displayElememnt.mode === 'video'">
-                <a (click)="scrollToElement(intro)">HOW IT WORKS</a>
-            </div>
-            <div class="nav-col" [class.nav-item-selected]="displayElememnt.mode === 'about'">
-                <a (click)="scrollToElement(about)">ABOUT US</a>
+            <div class="nav-col" [class.nav-item-selected]="displayElememnt.mode === 'intro'">
+                <a (click)="scrollToElement(intro,'intro')">HOW IT WORKS</a>
             </div>
             <div class="nav-col" [class.nav-item-selected]="displayElememnt.mode === 'about'">
-                <a (click)="scrollToElement(team)">OUR TEAM</a>
+                <a (click)="scrollToElement(about,'about')">ABOUT US</a>
+            </div>
+            <div class="nav-col" [class.nav-item-selected]="displayElememnt.mode === 'team'">
+                <a (click)="scrollToElement(team,'team')">OUR TEAM</a>
             </div>
             <div class="nav-col" [class.nav-item-selected]="displayElememnt.mode === 'contact'">
-                <a (click)="scrollToElement(contact)">CONTACT</a>
+                <a (click)="scrollToElement(contact,'contact')">CONTACT</a>
             </div>
-            <div class="tutor-button">
+            <div class="tutor-button" (click)="onEnquiryCalled()">
                 Join Us As Tutor
             </div>
         </div>
@@ -40,7 +49,7 @@
 
     <div class="row-top" style="justify-content: space-between">
         <div class="body-col" style="justify-content: flex-end;">
-            <img src="../../../assets/illustration-2.jpg" width="500" style="margin-top:100px">
+            <img id="img1" src="../../../assets/illustration-2.jpg" width="500" style="margin-top:100px">
         </div>
         <div class="body-col" style="justify-content: flex-start;">
 
@@ -50,7 +59,7 @@
                 <strong style="font-size: 1.8rem;">15 Minutes </strong> a day.
             </span>
             <div class="row-top" style="justify-content: center;">
-                <div class="content-button" (click)="scrollToElement(intro)">
+                <div class="content-button" (click)="scrollToElement(intro,'intro')">
                     Get Started
                 </div>&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="content-button" (click)="onRegisterCalled()">
@@ -63,11 +72,11 @@
 
 </section>
 
-<section #intro class="container-section" style="height: 90vh;">
+<section #intro id="intro" class="container-section" style="height: 90vh;">
 
     <div class="row-top" style="justify-content: space-between; margin-top: 36px;">
         <div class="body-col video-bg">
-            <youtube-player videoId="jzCI6Gwdsow" suggestedQuality="highres" [height]="300" [width]="500">
+            <youtube-player videoId="jzCI6Gwdsow" suggestedQuality="highres" [height]="220" [width]="300">
             </youtube-player>
         </div>
         <div class="body-col vide-besid">
@@ -89,7 +98,7 @@
             </div>
 
             <div class="body-col list-cntent">
-                <div class="row-top">
+                <div class="logo-container">
                     <div class="icon-bg">
                         <img src="../../../assets/icons/interview.png" width="35">
                     </div>
@@ -99,7 +108,7 @@
                     </div>
                 </div>
 
-                <div class="row-top">
+                <div class="logo-container">
                     <div class="icon-bg">
                         <img src="../../../assets/icons/video-call.png" width="30">
                     </div>
@@ -108,7 +117,7 @@
                     </div>
                 </div>
 
-                <div class="row-top">
+                <div class="logo-container">
                     <div class="icon-bg">
                         <img src="../../../assets/icons/calendar.png" width="30">
                     </div>
@@ -117,9 +126,9 @@
                     </div>
                 </div>
 
-                <div class="row-top">
+                <div class="logo-container">
                     <div class="icon-bg">
-                        <img src="../../../assets/icons/report.png" width="35">
+                        <img src="../../../assets/icons/report.png" width="30">
                     </div>
                     <div class="body-col" style="justify-content: center;">
                         <strong>Personalized Counselling & Daily Performance <br>Reports</strong>
@@ -131,12 +140,12 @@
 
 </section>
 
-<section #about class="container-section" style="height: 90vh;">
+<section #about id="about" class="container-section" style="height: 90vh;">
 
     <div class="row-top"
         style="flex-direction: row-reverse !important; justify-content: space-evenly; margin-top: 24px;">
         <div class="body-col left-col-bg">
-            <img src="../../../assets/team.jpg" width="600">
+            <img id="img2" src="../../../assets/team.jpg" width="600">
         </div>
         <div class="body-col right-col-bg">
 
@@ -172,9 +181,9 @@
 
 </section>
 
-<section #team class="container-section" style="height: 90vh;">
+<section #team id="team" class="container-section" style="height: 90vh;">
 
-    <div class="row-top team-col">
+    <div class="logo-container team-col">
 
         
         <div class="right-top-heading">
@@ -206,9 +215,9 @@
 
 </section>
 
-<section #contact class="container-section" style="height: 88vh;">
+<section #contact id="contact" class="container-section" style="height: 88vh;">
 
-    <div class="row-top" style="justify-content: space-between; margin-top: 48px">
+    <div class="row-top contact-us">
         <div class="contact-bottom">
         </div>
         <div class="body-col video-bg">
@@ -217,13 +226,13 @@
                 <form [formGroup]="contactForm" class="w-100">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" formControlName="name"
+                        <input type="text" class="form-control form-control-sm" id="name" formControlName="name"
                             placeholder="Enter your Name">
                     </div>
 
                     <div class="form-group">
-                        <label for="contact">Contact No. / Email</label>
-                        <input type="text" class="form-control" id="contact" formControlName="contact"
+                        <label for="contactE">Contact No. / Email</label>
+                        <input type="text" class="form-control form-control-sm" id="contactE" formControlName="contact"
                             placeholder="Enter contact no or email">
                     </div>
 
@@ -234,7 +243,7 @@
 
                     <div class="form-group">
                         <label for="username">Message</label>
-                        <textarea class="form-control" formControlName="message" rows="3"
+                        <textarea class="form-control form-control-sm" formControlName="message" rows="3"
                             placeholder="Your message to us..."></textarea>
                     </div>
                     <button class="btn btn-block btn-primary">Submit</button>
@@ -253,13 +262,13 @@
                 </div>
             </div>
 
-            <div class="row-top">
+            <div class="logo-container" id="reachUs">
                 <div class="body-col" style="justify-content: center;">
-                    <strong>Reach Out To Us</strong>
+                    <strong >Reach Out To Us</strong>
                 </div>
             </div>
 
-            <div class="row-top mt-3">
+            <div class="logo-container mt-3">
                 <div class="icon-bg">
                     <img src="../../../assets/icons/pin.png" width="25">
                 </div>
@@ -268,7 +277,7 @@
                 </div>
             </div>
 
-            <div class="row-top mt-3">
+            <div class="logo-container mt-3">
                 <div class="icon-bg">
                     <img src="../../../assets/icons/mail.png" width="25">
                 </div>
@@ -277,7 +286,7 @@
                 </div>
             </div>
 
-            <div class="row-top mt-3">
+            <div class="logo-container mt-3">
                 <div class="icon-bg">
                     <img src="../../../assets/icons/whatsapp.png" width="25">
                 </div>
@@ -290,7 +299,7 @@
             <!-- &copy; 2020 babbleapp.in
                         &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  -->
 
-            <div class="row-top follow-us-row">
+            <div class="logo-container follow-us-row">
                 <div class="body-col justify-content-center" style="height: 40px;">
                     <span>Connect With Us&nbsp;&nbsp;</span>
                 </div>

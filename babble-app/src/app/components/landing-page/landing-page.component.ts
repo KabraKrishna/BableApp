@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 })
 export class LandingPageComponent implements OnInit, OnChanges {
 
-  safeURL:any;
+  //for mobile device
+  isMenuOpen:boolean = false;
 
   contactForm: FormGroup;
 
@@ -43,9 +44,10 @@ export class LandingPageComponent implements OnInit, OnChanges {
     
   }
 
-  scrollToElement($element): void {
-    console.log($element);
+  scrollToElement($element,selectedElement: string): void {
+    this.displayElememnt.mode = selectedElement;
     $element.scrollIntoView({behavior: "smooth", block: "center"});
+    this.isMenuOpen = false;
   }
 
   setDisplayElement(mode: string){
@@ -55,6 +57,10 @@ export class LandingPageComponent implements OnInit, OnChanges {
 
   onRegisterCalled(){
     this.router.navigate(['register']);
+  }
+
+  onEnquiryCalled(){
+    this.router.navigate(['tutor-enquiry']);
   }
 
 }
