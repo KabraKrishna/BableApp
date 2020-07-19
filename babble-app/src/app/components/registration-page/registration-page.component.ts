@@ -5,6 +5,7 @@ import { promoCodeValidator } from './promocode.validator';
 import { User } from './user';
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
 
+
 export interface TimeSlotModel {
   id: number,
   slot: string,
@@ -30,12 +31,18 @@ export class RegistrationPageComponent implements OnInit {
   userRegistration: FormGroup;
   isSelectedSlot: TimeSlotModel = null;
 
-  constructor(private builder: FormBuilder, private db: AngularFireDatabase, private cd: ChangeDetectorRef) {
+  constructor(private builder: FormBuilder,
+    private db: AngularFireDatabase,
+    private cd: ChangeDetectorRef,
+    ) {
 
     this.getTimeSlots().then((res: boolean) => {
       if(res)
         cd.detectChanges();
     });
+
+    
+
     this.userRegistration = this.builder.group({
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
@@ -114,6 +121,7 @@ export class RegistrationPageComponent implements OnInit {
       console.log("Data Missing!");
     }
   }
+  
 
   ngOnInit(): void {
   }

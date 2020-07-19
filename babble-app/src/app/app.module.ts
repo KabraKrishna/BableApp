@@ -27,7 +27,7 @@ import { TutorEnquiryPageComponent } from './components/tutor-enquiry-page/tutor
     FormsModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'babble'),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
