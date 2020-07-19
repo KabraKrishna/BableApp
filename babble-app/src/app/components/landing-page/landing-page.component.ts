@@ -70,12 +70,6 @@ export class LandingPageComponent implements OnInit, OnChanges {
         name: this.contactForm.controls.name.value,
         contact: this.contactForm.controls.contact.value,
         message: this.contactForm.controls.message.value
-      }).then((response) => {
-        this.contactForm.reset();
-        window.scrollTo(0, 0);
-        //success alert
-      }).catch(() => {
-        //failure alert
       })
     } else{
       console.log("Data Missing!");

@@ -84,7 +84,7 @@ export class RegistrationPageComponent implements OnInit {
   }
 
   submitForm() {
-    if (this.userRegistration.controls.firstName.value != "" && this.userRegistration.controls.email.value != "" && this.userRegistration.controls.contactNumber.value != "" && this.userRegistration.controls.timeSlot) {
+    if (this.isSelectedSlot.id != undefined && this.userRegistration.controls.firstName.value != "" && this.userRegistration.controls.email.value != "" && this.userRegistration.controls.contactNumber.value != "" && this.userRegistration.controls.timeSlot) {
       if(this.isSelectedSlot.count < 3){
         this.isSelectedSlot.count++;
         if(this.isSelectedSlot.count == 3){
@@ -116,10 +116,6 @@ export class RegistrationPageComponent implements OnInit {
           return timeSlotObject.id === this.isSelectedSlot.id;
         });
         this.timeSlotArray[index] = this.isSelectedSlot;
-      }).then((response) => {
-        //success alert
-      }).catch(() => {
-        //failure alert
       })
     } else {
       console.log("Data Missing!");

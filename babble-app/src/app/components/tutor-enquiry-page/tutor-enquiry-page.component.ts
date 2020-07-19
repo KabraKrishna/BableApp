@@ -57,11 +57,7 @@ export class TutorEnquiryPageComponent implements OnInit {
         gender: this.tutorEnquiryForm.controls.gender.value,
         availableHours: this.isSelectedSlot,
         referredFrom: this.tutorEnquiryForm.controls.referredFrom.value
-      })).then((response) => {
-        //success alert
-      }).catch(() => {
-        //failure alert
-      })
+      }))
 
       this.tutorEnquiryForm.reset();
       window.scrollTo(0, 0);

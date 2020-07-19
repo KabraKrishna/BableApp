@@ -8,7 +8,7 @@ export class TeamBabbleApp {
         instagram: '@aakash_o1'
       },{
         name: 'Pranav Bhoge',
-        role: 'Cofounder',
+        role: 'Co-founder',
         image: '../../../assets/team/pranav.png',
         linkedin: 'pranavbhoge',
         instagram: '@pranavb_07'
