@@ -109,7 +109,11 @@ export class RegistrationPageComponent implements OnInit {
           return timeSlotObject.id === this.isSelectedSlot.id;
         });
         this.timeSlotArray[index] = this.isSelectedSlot;
-      });
+      }).then((response) => {
+        //success alert
+      }).catch(() => {
+        //failure alert
+      })
     } else {
       console.log("Data Missing!");
     }

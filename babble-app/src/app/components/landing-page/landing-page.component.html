@@ -26,9 +26,9 @@
             <div class="btn close-btn" (click)="isMenuOpen = false">
                 <img src="../../../assets//icons/close.png" alt="close" width="20">
             </div>
-            <div class="nav-col" [class.nav-item-selected]="displayElememnt.mode === 'home'">
+            <!-- <div class="nav-col" [class.nav-item-selected]="displayElememnt.mode === 'home'">
                 <a (click)="scrollToElement(home,'home')">HOME</a>
-            </div>
+            </div> -->
             <div class="nav-col" [class.nav-item-selected]="displayElememnt.mode === 'intro'">
                 <a (click)="scrollToElement(intro,'intro')">HOW IT WORKS</a>
             </div>
@@ -89,11 +89,8 @@
 
             <div class="row-top" style="justify-content: space-evenly;
                 width: 70%; padding-top: 5px;">
-                <div class="body-col heading-subtext">
-                    How babble app helps
-                </div>
-                <div class="body-col heading-subtext">
-                    What we offer
+                <div class="body-col heading-text">
+                    What We Offer
                 </div>
             </div>
 
@@ -158,23 +155,23 @@
                 We are a young team of enthusiasts working towards achieving a common goal
                 of making the process of speaking english effective and fun.<br><br>
 
-                Set off during the COVID pandemic, a time when the world came to an introspective juncture,
-                the main thought behind the idea was to help people make the best use of their time by honing
-                a much needed skill of speaking english in a fluent and confident manner in the comfort of their
+                Envisioned during the COVID pandemic, a time when the world came to a standstill,
+                our purpose was is to help people make the best use of their time by honing
+                the indispensable skill of speaking english in a fluent and confident manner, in the comfort of their
                 homes.<br><br>
 
-                There is too much being talked about various courses at offer these days,
-                that come with a promise to make you proficient in the language in a limited period of time.<br><br>
+                Numerous courses advertise the promise to enhance your English proficieny,
+                but offer the same old techniques.<br>
 
-                At Team BabbleApp we seek to bring in a new perspective to look at the problem
-                by restricting our prime focus purely ,as PRACTICE.<br>
+                Our team seeks to tackle the problem from a fresh perspective,
+                by providing a safe learning space and focusing purely on guided PRACTICE.<br>
             </p>
 
             <div class="vision-text">
                 <div class="q-bottom-right">
                     &rdquo;
                 </div>
-                <strong>Our vision is as simple as giving voice to every thoughtful mind</strong>
+                <strong>We aspire to equip every thoughtful mind,<br> with a voice.</strong>
             </div>
         </div>
     </div>
@@ -205,8 +202,8 @@
                     <h5 class="card-text">{{member.role}}</h5>
                 </div>
                 <div class="card-footer">
-                   <a href="https://www.linkedin.com/in/{{member.linkidin}}"><img src="../../../assets/icons/linkedin.png" width="28"></a> 
-                    &nbsp;&nbsp;<h5>{{member.linkidin}}</h5>
+                   <a class="social-links" href="https://www.linkedin.com/in/{{member.linkedin}}"><img src="../../../assets/icons/linkedin.png" width="28"></a>
+                   <a class="social-links" href="https://www.instagram.com/{{member.instagram}}/"><img src="../../../assets/icons/instagram-logo.png" width="28"></a>
                 </div>
             </div>
 
@@ -223,7 +220,7 @@
         <div class="body-col video-bg">
 
             <div class="contact-form w-75 mx-auto">
-                <form [formGroup]="contactForm" class="w-100">
+                <form [formGroup]="contactForm" (ngSubmit)="submitEnquiry()" class="w-100">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control form-control-sm" id="name" formControlName="name"
@@ -246,7 +243,7 @@
                         <textarea class="form-control form-control-sm" formControlName="message" rows="3"
                             placeholder="Your message to us..."></textarea>
                     </div>
-                    <button class="btn btn-block btn-primary">Submit</button>
+                    <button class="btn btn-block btn-primary" [disabled]="!contactForm.valid">Submit</button>
                 </form>
             </div>
 
