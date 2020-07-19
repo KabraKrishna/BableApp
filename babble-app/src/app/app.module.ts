@@ -11,6 +11,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule  } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { TutorEnquiryPageComponent } from './components/tutor-enquiry-page/tutor-enquiry-page.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { TutorEnquiryPageComponent } from './components/tutor-enquiry-page/tutor
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'babble'),
     AngularFireDatabaseModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

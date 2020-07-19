@@ -18,10 +18,7 @@
         </div>
     </div>
 
-    <!-- <div class="left-top-heading">
-    </div> -->
-
-    <form class="w-100 mx-0 my-0 px-0 py-0" [formGroup]="userRegistration" (ngSubmit)="submitForm()">
+    <form class="w-100 mx-0 my-0 px-0 py-0" [formGroup]="userRegistration" (ngSubmit)="submitForm(modelTemplate)">
 
         <div class="card">
             <label>Basic Details</label>
@@ -284,18 +281,18 @@
                 <div class="form-group">
                     <div class="row mx-auto">
                         <label>
-                            Select your preferred time slot for 30 Days (Select carefully, once submitted no alteration is possible)
+                            Select your preferred time slot for 30 Days (Select carefully, once submitted no alteration
+                            is possible)
                         </label>
                     </div>
-                    <div class="row">
+                    <div class="row justify-content-center">
                         <div class="col-lg-2 col-4 py-2 px-auto" *ngFor="let slot of timeSlotArray">
-                            <button class="btn btn-sm btn-block" type="button" [disabled] = "slot.isAvailable ? slot.isBooked : true"
-                                [ngClass]="{'btn-outline-success': slot.isAvailable ? !slot.isBooked : false, 
+                            <button class="btn btn-sm btn-block" type="button"
+                                [disabled]="slot.isAvailable ? slot.isBooked : true" [ngClass]="{'btn-outline-success': slot.isAvailable ? !slot.isBooked : false, 
                                             'btn-danger': slot.isAvailable ? slot.isBooked : false,
                                             'btn-secondary': !slot.isAvailable }"
                                 [class.active]=" isSelectedSlot ? isSelectedSlot.slot === slot.slot : false"
-                                (click)="selectTimeSlot(slot)"
-                            >{{slot.slot}}</button>
+                                (click)="selectTimeSlot(slot)">{{slot.slot}}</button>
                         </div>
                     </div>
                 </div>
@@ -314,8 +311,9 @@
                 </div>
                 <div class="form-group">
                     <div class="input-group">
-                        <input class="col-sm-12 form-control" type="text" formControlName="promoCode" placeholder="Your Code">
-                      </div>
+                        <input class="col-sm-12 form-control" type="text" formControlName="promoCode"
+                            placeholder="Your Code">
+                    </div>
                     <!-- <p class="error-message"
                         [hidden]="userRegistration.controls.promoCode.errors?.promoCodeValidation || !isPromoCodeValid">
                         
@@ -337,7 +335,8 @@
                 <!-- Self Declaration  -->
                 <div class="row mx-auto">
                     <label>
-                        I will strictly follow the professional etiquette and will not misbehave with the tutor. If found, BabbleApp has authority to cancel my registration.
+                        I will strictly follow the professional etiquette and will not misbehave with the tutor. If
+                        found, BabbleApp has authority to cancel my registration.
                     </label>
                 </div>
                 <div class="row mx-auto">
@@ -360,29 +359,59 @@
         <div class="row my-3">
             <div class="col-lg-3 col-6">
                 <button type="submit" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal"
-                [disabled]="!userRegistration.valid || !userRegistration.controls.isDeclarationAccepted.value">Register</button>
-                
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" style="text-align: center;">Thank You!</h4>
-                        </div>
-                        <div class="modal-body" style="text-align: center;">
-                            <p>Registered Successfully! Please feel free to contact us for the next steps:</p>
-                            <p>Akash: 9130081881</p>
-                            <p>Akshay: 9595032007</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+                    [disabled]="!userRegistration.valid || !userRegistration.controls.isDeclarationAccepted.value">Register</button>
             </div>
         </div>
 
     </form>
 
 </section>
+
+<ng-template #modelTemplate>
+    <div class="modal-header mdhead">
+        <div class="col">
+            <div class="row">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3 class="text-center">Congratulations</h3>
+                    <p class="text-center">Your first-step to Level Up Speaking English was completed successfully</p>
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-center mt-2">
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg">
+                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="col">
+            <div class="row" style="border-bottom: 1px solid rgba(136, 136, 136, 0.685);">
+                <h4>What Next?</h4>
+            </div>
+            <div class="row mt-3 mb-2">
+                <h6>Contact Out Team for further process</h6>
+            </div>
+            <div class="row align-items-center justify-content-around">
+                <div class="col-6 align-items-center justify-content-center text-center" style="border-right: 1px solid #000;">
+                    <h6>Aakash</h6>
+                    <h6>(+91)9130081881</h6>
+                </div>
+                <div class="col-6 align-items-center justify-content-center text-center">
+                    <h6>Akshay</h6>
+                    <h6>(+91)9156897772</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn mbtn pull-right" aria-label="Close" (click)="closeModal()">
+            Okay
+        </button>
+    </div>
+</ng-template>

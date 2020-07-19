@@ -214,6 +214,21 @@
     .display-none{
       display: none;
     }
+
+    .mdhead{
+      background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+      height: 250px;
+      & * {
+        color: #fff;
+        font-weight: 600;
+      }
+    }
+    
+  
+  .mbtn{
+    background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+    color: #fff;
+  }
   
   // Tablet View
   
