@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { FormGroup, FormControl, Validators, AbstractControl, FormBuilder } from '@angular/forms';
 import { promoCodeValidator } from './promocode.validator';
 import { User } from './user';
@@ -29,7 +30,7 @@ export class RegistrationPageComponent implements OnInit {
   myForm: FormGroup;
   isSelectedSlot: TimeSlotModel = null;
 
-  constructor(private builder: FormBuilder) {
+  constructor(private builder: FormBuilder, private db: AngularFireDatabase) {
 
     this.myForm = this.builder.group({
       firstName: new FormControl('', Validators.required),
@@ -104,22 +105,38 @@ export class RegistrationPageComponent implements OnInit {
 
   submitForm() {
     console.log("Submitted!");
-    console.log("Details:");
-    console.log("firstName: " + this.myForm.controls.firstName.value);
-    console.log("lastName: " + this.myForm.controls.lastName.value);
-    console.log("email: " + this.myForm.controls.email.value);
-    console.log("age: " + this.myForm.controls.age.value);
-    console.log("proffesion: " + this.myForm.controls.proffesion.value);
-    console.log("contactNumber: " + this.myForm.controls.contactNumber.value);
-    console.log("address: " + this.myForm.controls.address.value);
-    console.log("gender: " + this.myForm.controls.gender.value);
-    console.log("isComfortableWithOppositeGender: " + this.myForm.controls.isComfortableWithOppositeGender.value);
-    console.log("referredFrom: " + this.myForm.controls.referredFrom.value);
-    console.log('timeSlot: ', this.myForm.controls.timeSlot.value);
-    console.log("promoCode: " + this.myForm.controls.promoCode.value);
-    console.log("purpose: " + this.myForm.controls.purpose.value);
-    console.log("isDeclarationAccepted: " + this.myForm.controls.isDeclarationAccepted.value);
-
+    console.log("firstName: "+this.myForm.controls.firstName.value);
+    console.log("lastName: "+this.myForm.controls.lastName.value);
+    console.log("email: "+this.myForm.controls.email.value);
+    console.log("age: "+this.myForm.controls.age.value);
+    console.log("proffesion: "+this.myForm.controls.proffesion.value);
+    console.log("contactNumber: "+this.myForm.controls.contactNumber.value);
+    console.log("address: "+this.myForm.controls.address.value);
+    console.log("gender: "+this.myForm.controls.gender.value);
+    console.log("isComfortableWithOppositeGender: "+this.myForm.controls.isComfortableWithOppositeGender.value);
+    console.log("referredFrom: "+this.myForm.controls.referredFrom.value);
+    console.log("promoCode: "+this.myForm.controls.promoCode.value);
+    console.log("purpose: "+this.myForm.controls.purpose.value);
+    console.log("isDeclarationAccepted: "+this.myForm.controls.isDeclarationAccepted.value);
+    if (this.myForm.controls.firstName.value != "" && this.myForm.controls.email.value != "" && this.myForm.controls.contactNumber.value != "") {
+      this.db.database.ref('/users').set(({
+        firstName: this.myForm.controls.firstName.value,
+        lastName: this.myForm.controls.lastName.value,
+        email: this.myForm.controls.email.value,
+        age: this.myForm.controls.age.value,
+        profession: this.myForm.controls.proffesion.value,
+        contactNumber: this.myForm.controls.contactNumber.value,
+        address: this.myForm.controls.address.value,
+        gender: this.myForm.controls.gender.value,
+        isComfortableWithOppositeGender: this.myForm.controls.isComfortableWithOppositeGender.value,
+        referredFrom: this.myForm.controls.referredFrom.value,
+        promoCode: this.myForm.controls.promoCode.value,
+        purpose: this.myForm.controls.purpose.value,
+        isDeclarationAccepted: this.myForm.controls.isDeclarationAccepted.value,
+      }));
+    } else {
+      console.log("Data Missing!");
+    }
   }
 
   ngOnInit(): void {
