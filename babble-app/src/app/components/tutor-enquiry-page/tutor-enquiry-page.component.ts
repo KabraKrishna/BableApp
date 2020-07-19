@@ -45,7 +45,6 @@ export class TutorEnquiryPageComponent implements OnInit {
   }
 
   submitForm() {
-    console.log("Submitted!");
     if (this.tutorEnquiryForm.controls.firstName.value != "" && this.tutorEnquiryForm.controls.email.value != "" && this.tutorEnquiryForm.controls.contactNumber.value != "") {
       this.db.database.ref('/tutorEnquiry/' + Date.now()).set(({
         firstName: this.tutorEnquiryForm.controls.firstName.value,
@@ -56,11 +55,13 @@ export class TutorEnquiryPageComponent implements OnInit {
         contactNumber: this.tutorEnquiryForm.controls.contactNumber.value,
         address: this.tutorEnquiryForm.controls.address.value,
         gender: this.tutorEnquiryForm.controls.gender.value,
-        isComfortableWithOppositeGender: this.tutorEnquiryForm.controls.isComfortableWithOppositeGender.value,
-        referredFrom: this.tutorEnquiryForm.controls.referredFrom.value,
-        purpose: this.tutorEnquiryForm.controls.purpose.value,
-        isDeclarationAccepted: this.tutorEnquiryForm.controls.isDeclarationAccepted.value
-      }));
+        availableHours: this.isSelectedSlot,
+        referredFrom: this.tutorEnquiryForm.controls.referredFrom.value
+      })).then((response) => {
+        //success alert
+      }).catch(() => {
+        //failure alert
+      })
 
       this.tutorEnquiryForm.reset();
       window.scrollTo(0, 0);

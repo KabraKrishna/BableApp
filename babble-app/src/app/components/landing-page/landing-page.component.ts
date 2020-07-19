@@ -3,7 +3,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { TeamBabbleApp } from "./babbleapp-team";
 import { Router } from '@angular/router';
-
+import { AngularFireDatabase } from '@angular/fire/database';
+declare var $: any;
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -24,12 +25,11 @@ export class LandingPageComponent implements OnInit, OnChanges {
   teamBabbleApp = new TeamBabbleApp();
 
   constructor(public builder: FormBuilder,
-    public router: Router){
+    public router: Router, private db: AngularFireDatabase){
 
     this.contactForm = this.builder.group({
       name: new FormControl(null,Validators.required),
       contact: new FormControl(null,Validators.required),
-      email: new FormControl(null,Validators.required),
       message: [''],
     });
 
@@ -41,7 +41,6 @@ export class LandingPageComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    
   }
 
   scrollToElement($element,selectedElement: string): void {
@@ -61,6 +60,26 @@ export class LandingPageComponent implements OnInit, OnChanges {
 
   onEnquiryCalled(){
     this.router.navigate(['tutor-enquiry']);
+  }
+
+  submitEnquiry(){
+    if (this.contactForm.controls.name.value != "" &&
+      this.contactForm.controls.contact.value != "" &&
+      this.contactForm.controls.message.value != "") {
+      this.db.database.ref('/contactUs/' + Date.now()).set({
+        name: this.contactForm.controls.name.value,
+        contact: this.contactForm.controls.contact.value,
+        message: this.contactForm.controls.message.value
+      }).then((response) => {
+        this.contactForm.reset();
+        window.scrollTo(0, 0);
+        //success alert
+      }).catch(() => {
+        //failure alert
+      })
+    } else{
+      console.log("Data Missing!");
+    }
   }
 
 }
