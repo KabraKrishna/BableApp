@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <form class="w-100 mx-0 my-0 px-0 py-0" [formGroup]="tutorEnquiryForm" (ngSubmit)="submitForm()">
+    <form class="w-100 mx-0 my-0 px-0 py-0" [formGroup]="tutorEnquiryForm" (ngSubmit)="submitForm(modelTemplate)">
 
         <div class="card">
             <label>Basic Details</label>
@@ -210,29 +210,37 @@
 
         <div class="row my-3">
             <div class="col-lg-3 col-6">
-                <button type="submit" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal"
+                <button type="submit" class="btn btn-success btn-block"
                 [disabled]="!tutorEnquiryForm.valid">Submit</button>
             </div>
         </div>
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Thank You!</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p>Registered Successfully! Please feel free to contact us for the next steps:</p>
-                            <p>Akash: 9130081881</p>
-                            <p>Akshay: 9595032007</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
 
     </form>
 
 </section>
+
+<ng-template #modelTemplate>
+    <div class="modal-header mdhead">
+        <div class="col">
+            <div class="row">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3 class="text-center">Thank You!</h3>
+                    <p class="text-center">Your Enquiry for enrolment was submitted successfully </p>
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-center mt-2">
+                <p class="text-center">You may expect an interview call within 24-48 hours from us.</p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn mbtn pull-right" aria-label="Close" (click)="closeModal()">
+            Okay
+        </button>
+    </div>
+</ng-template>

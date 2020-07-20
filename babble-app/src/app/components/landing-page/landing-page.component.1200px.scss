@@ -6,17 +6,15 @@
     border-radius: 24px 0px 24px 0px;
     box-shadow:0.5px 0.5px 7px #000;
 }
-
-// header{
-//     position: relative;
-//     margin: 10px auto;
-//     padding: 5px 10px;
-//     width: 98%;
-//     border-radius: 24px 24px 0px 0px;
-//     // background-color: rgba(98, 255, 247, 0.5);
-//     box-shadow:0.5px 0.5px 7px #000;
-//     transition: all 1s ease-in-out;
-// }
+.ham-btn-container{
+    display: none;
+}
+.close-btn{
+    display: none;
+}
+.temp{
+    background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+}
 .right-bottom-video{
     content: '';
     position: absolute;

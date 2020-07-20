@@ -1,9 +1,10 @@
-import { Component, OnInit, ChangeDetectorRef, resolveForwardRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, resolveForwardRef, TemplateRef } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { FormGroup, FormControl, Validators, AbstractControl, FormBuilder } from '@angular/forms';
 import { promoCodeValidator } from './promocode.validator';
 import { User } from './user';
 import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 
 export interface TimeSlotModel {
@@ -31,17 +32,18 @@ export class RegistrationPageComponent implements OnInit {
   userRegistration: FormGroup;
   isSelectedSlot: TimeSlotModel = null;
 
+  bsModalRef: BsModalRef;
+
   constructor(private builder: FormBuilder,
     private db: AngularFireDatabase,
     private cd: ChangeDetectorRef,
+    private bsModalService: BsModalService
     ) {
 
     this.getTimeSlots().then((res: boolean) => {
       if(res)
         cd.detectChanges();
     });
-
-    
 
     this.userRegistration = this.builder.group({
       firstName: new FormControl('', Validators.required),
@@ -59,6 +61,13 @@ export class RegistrationPageComponent implements OnInit {
       purpose: new FormControl('', Validators.required),
       isDeclarationAccepted: new FormControl('', Validators.required),
     })
+  }
+
+  openModal(template: TemplateRef<any>){
+      this.bsModalRef = this.bsModalService.show(template,{class: 'modal-dialog-centered'});
+  }
+  closeModal(){
+    this.bsModalRef.hide();
   }
 
   getTimeSlots(): any {
@@ -83,7 +92,7 @@ export class RegistrationPageComponent implements OnInit {
     this.isSelectedSlot = slot;
   }
 
-  submitForm() {
+  submitForm(template: TemplateRef<any>) {
     if (this.isSelectedSlot.id != undefined && this.userRegistration.controls.firstName.value != "" && this.userRegistration.controls.email.value != "" && this.userRegistration.controls.contactNumber.value != "" && this.userRegistration.controls.timeSlot) {
       if(this.isSelectedSlot.count < 3){
         this.isSelectedSlot.count++;
@@ -111,6 +120,7 @@ export class RegistrationPageComponent implements OnInit {
         }));
         this.userRegistration.reset();
         window.scrollTo(0, 0);
+        this.openModal(template);
       }).then(() => {
         let index = this.timeSlotArray.findIndex((timeSlotObject) => {
           return timeSlotObject.id === this.isSelectedSlot.id;

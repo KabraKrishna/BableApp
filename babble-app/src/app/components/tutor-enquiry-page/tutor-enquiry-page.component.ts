@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup, AbstractControl } from '@angular/forms';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-tutor-enquiry-page',
@@ -11,8 +12,9 @@ export class TutorEnquiryPageComponent implements OnInit {
 
   tutorEnquiryForm: FormGroup;
   isSelectedSlot: number = 0;
+  bsModalRef: BsModalRef;
 
-  constructor(private builder: FormBuilder, private db: AngularFireDatabase) {
+  constructor(private builder: FormBuilder, private db: AngularFireDatabase, private bsModalService: BsModalService) {
 
     this.tutorEnquiryForm = this.builder.group({
       firstName: new FormControl('', Validators.required),
@@ -39,12 +41,19 @@ export class TutorEnquiryPageComponent implements OnInit {
     return (control.touched && control.valid);
   }
 
+  openModal(template: TemplateRef<any>) {
+    this.bsModalRef = this.bsModalService.show(template, { class: 'modal-dialog-centered' });
+  }
+  closeModal() {
+    this.bsModalRef.hide();
+  }
+
   selectTimeSlot(slot: number) {
     this.tutorEnquiryForm.controls.timeSlot.setValue(slot);
     this.isSelectedSlot = slot;
   }
 
-  submitForm() {
+  submitForm(template: TemplateRef<any>) {
     if (this.tutorEnquiryForm.controls.firstName.value != "" && this.tutorEnquiryForm.controls.email.value != "" && this.tutorEnquiryForm.controls.contactNumber.value != "") {
       this.db.database.ref('/tutorEnquiry/' + Date.now()).set(({
         firstName: this.tutorEnquiryForm.controls.firstName.value,
@@ -61,6 +70,7 @@ export class TutorEnquiryPageComponent implements OnInit {
 
       this.tutorEnquiryForm.reset();
       window.scrollTo(0, 0);
+      this.openModal(template);
     } else {
       console.log("Data Missing!");
     }

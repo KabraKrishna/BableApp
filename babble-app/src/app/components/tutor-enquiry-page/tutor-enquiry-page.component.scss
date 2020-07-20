@@ -214,6 +214,21 @@
     .display-none{
       display: none;
     }
+
+    .mdhead{
+      background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+      height: 250px;
+      & * {
+        color: #fff;
+        font-weight: 600;
+      }
+    }
+    
+  
+  .mbtn{
+    background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+    color: #fff;
+  }
   
   // Tablet View
   
@@ -316,4 +331,33 @@
       margin-bottom: 1rem;
     }
   
+  }
+
+  .modal-header-text{
+    width: 100%;
+    text-align: justify;
+    font-size: 1.2rem;
+    font-weight: 800;
+    font-style: italic;
+    font-style: strong;
+    background: -webkit-linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+    //background-clip: text;
+    -webkit-text-fill-color: WHITE;
+  }
+  
+  .modal-footer-button{
+      text-align: justify;
+      font-size: 1.2rem;
+      font-weight: 800;
+      font-style: italic;
+      background: -webkit-linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+      /* -webkit-background-clip: text; */
+      -webkit-text-fill-color: WHITE;
+      /* float: left; */
+      border: none;
+  }
+  
+  .contact-info{
+    font-weight: bold;
+    font-size: large;
   }
