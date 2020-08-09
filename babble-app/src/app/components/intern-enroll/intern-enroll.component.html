@@ -1,0 +1,399 @@
+<section #registrationForm class="form-section-container">
+
+    <div class="right-top-heading">
+        <div class="heading-text">
+            Intern Enrollment Form
+        </div>
+    </div>
+
+    <div class="logo-row">
+        <div class="row-top">
+            <div class="logo-col-1">
+                <img src="../../../assets/logo-babbleapp-1.jpg" width="75">
+            </div>
+            <div class="logo-col-2">
+                <span>BABBLE APP</span>
+                <span>Speak&nbsp;|&nbsp;Learn&nbsp;|&nbsp;Grow</span>
+            </div>
+        </div>
+    </div>
+
+    <form class="w-100 mx-0 my-0 px-0 py-0" [formGroup]="internEnrollForm" (ngSubmit)="submitForm(modelTemplate)">
+
+        <div class="card">
+            <label>Opportunity</label>
+            <div class="card-body">
+
+                <!-- info -->
+                <div class="form-group">
+                    <div class="row mx-auto pq">
+                        <label>
+                            Fill in your basic details and expect an interview call from us in 24-48 work hours.
+                            Further details will be provided to you based on your chosen role of interest.
+                        </label>
+                        <label>
+                            Being a young startup, we can only assure you of an unfathomable learning experience and an 
+                            agreeable share of the bread we earn as a team.
+                        </label>
+                        <label>
+                            We believe in the this startup idea and the future prospect of it, 
+                            Each one of us are determined to make it a success. 
+                            We are certain you are going to treasure enormous learning experience in this journey.
+                        </label>
+                    </div>
+                    <div class="row mx-auto">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td>Duration of internship</td>
+                                    <td>30 days to 60 days</td>
+                                </tr>
+                                <tr>
+                                    <td>Mode of Work</td>
+                                    <td>Work From Home</td>
+                                </tr>
+                                <tr>
+                                    <td>Timings</td>
+                                    <td>4 Hours + Certificate will be provided</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <strong>Ask for job description file on call/Whats-app 9130081881.</strong>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <label>Basic Details</label>
+            <div class="card-body">
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <!-- First Name -->
+                            <div class="form-group">
+                                <input class="col-sm-12 form-control" type="text" formControlName="firstName" #firstName
+                                    [ngClass]="{'focused-input-valid': isValid(internEnrollForm.controls.firstName),
+                                'focused-input-invalid': isInvalid(internEnrollForm.controls.firstName)}">
+                                <label for="First Name" [ngClass]="{'focused-label-valid': isValid(internEnrollForm.controls.firstName),
+                                    'focused-label-invalid': isInvalid(internEnrollForm.controls.firstName)}">
+                                    First Name
+                                </label>
+                                <p class="error-message" *ngIf="isInvalid(internEnrollForm.controls.firstName)">
+                                    First name is mandatory!
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6">
+                            <!-- Last Name -->
+                            <div class="form-group">
+                                <input class="col-sm-12 form-control" type="text" formControlName="lastName" #lastName
+                                    [ngClass]="{'focused-input-valid': isValid(internEnrollForm.controls.lastName),
+                                'focused-input-invalid': isInvalid(internEnrollForm.controls.lastName)}">
+                                <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(internEnrollForm.controls.lastName),
+                                    'focused-label-invalid': isInvalid(internEnrollForm.controls.lastName)}">
+                                    Last Name
+                                </label>
+                                <p class="error-message" *ngIf="isInvalid(internEnrollForm.controls.lastName)">
+                                    Last name is mandatory!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="row">
+                        <!-- Gender -->
+                        <div class="col-12 col-lg-6" id="genCol">
+
+                            <div class="input-group">
+                                <span class="input-group-text">Gender</span>&nbsp;&nbsp;
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" value="male"
+                                        formControlName="gender">
+                                    <label class="form-check-label">Male</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" value="female"
+                                        formControlName="gender">
+                                    <label class="form-check-label">Female</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" value="other"
+                                        formControlName="gender">
+                                    <label class="form-check-label">Other</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-12 col-lg-6">
+
+                            <!-- Age -->
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Age</span>
+                                </div>
+                                <input class="form-control" type="number" formControlName="age">
+                            </div>
+                            <p class="error-message" *ngIf="isInvalid(internEnrollForm.controls.age)">
+                                Please provide a valid age in years!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profession  -->
+                <div class="form-group">
+                    <input class="col-sm-12 form-control" type="text" formControlName="profession" [ngClass]="{'focused-input-valid': isValid(internEnrollForm.controls.profession),
+                    'focused-input-invalid': isInvalid(internEnrollForm.controls.profession)}">
+                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(internEnrollForm.controls.profession),
+                        'focused-label-invalid': isInvalid(internEnrollForm.controls.profession)}">
+                        Current Profession
+                    </label>
+                    <p class="error-message" *ngIf="isInvalid(internEnrollForm.controls.profession)">
+                        Profession is mandatory!
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <label>Contact Details</label>
+            <div class="card-body">
+
+                <!-- Address  -->
+                <div class="form-group">
+                    <input class="col-sm-12 form-control" type="text" formControlName="address" [ngClass]="{'focused-input-valid': isValid(internEnrollForm.controls.address),
+                    'focused-input-invalid': isInvalid(internEnrollForm.controls.address)}">
+                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(internEnrollForm.controls.address),
+                        'focused-label-invalid': isInvalid(internEnrollForm.controls.address)}">
+                        Address
+                    </label>
+                    <p class="error-message" *ngIf="isInvalid(internEnrollForm.controls.address)">
+                        Address is mandatory!
+                    </p>
+                </div>
+
+
+                <!-- Contact Number  -->
+                <div class="form-group">
+                    <input class="col-sm-12 form-control" type="tel" formControlName="contactNumber" [ngClass]="{'focused-input-valid': isValid(internEnrollForm.controls.contactNumber),
+                    'focused-input-invalid': isInvalid(internEnrollForm.controls.contactNumber)}">
+                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(internEnrollForm.controls.contactNumber),
+                        'focused-label-invalid': isInvalid(internEnrollForm.controls.contactNumber)}">
+                        Contact Number
+                    </label>
+                    <p class="error-message" *ngIf="isInvalid(internEnrollForm.controls.contactNumber)">
+                        Please enter a valid contact number! Ex. 9874********
+                    </p>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <input class="col-sm-12 form-control" type="text" formControlName="email" [ngClass]="{'focused-input-valid': isValid(internEnrollForm.controls.email),
+                    'focused-input-invalid': isInvalid(internEnrollForm.controls.email)}">
+                    <label for="Last Name" [ngClass]="{'focused-label-valid': isValid(internEnrollForm.controls.email),
+                        'focused-label-invalid': isInvalid(internEnrollForm.controls.email)}">
+                        Email
+                    </label>
+                    <p class="error-message" *ngIf="isInvalid(internEnrollForm.controls.email)">
+                        Please enter a valid email!
+                    </p>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+
+        <div class="card">
+            <label>Other Details</label>
+            <div class="card-body">
+
+                
+
+                <!-- Q1 -->
+                <div class="form-group">
+                    <div class="row mx-auto">
+                        <label>
+                            How many hours can you dedicate as an intern with us?
+                        </label>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 col-lg-2 mb-2" *ngFor="let hrs of [1,2,3,4,5,6]">
+                            <button class="btn btn-sm btn-block btn-outline-primary" type="button"
+                                [class.active]=" isSelectedSlot === hrs"
+                                (click)="selectTimeSlot(hrs)"
+                            >{{hrs}}&nbsp; Hour</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="form-group">
+                    <div class="row mx-auto">
+                        <label>
+                            Being in startup means living in uncertainty, 
+                            can you commit yourself in hard times and challenging situations which are not bound to clock?
+                        </label>
+                    </div>
+                    <div class="row mx-auto">
+                        <div class="col col-lg-3">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="radio" name="isCommitted" value="yes"
+                                            formControlName="isCommitted">
+                                    </div>
+                                </div>
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        Yes
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col col-lg-3">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="radio" name="isCommitted" value="No"
+                                            formControlName="isCommitted">
+                                    </div>
+                                </div>
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        No
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="form-group">
+                    <div class="row mx-auto">
+                        <label>
+                            I am interested in following roles (Selection of multiple roles will increase the chances of getting an offer)
+                        </label>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-6 mb-2" *ngFor="let interest of internEnrollForm.get('myIntrests')['controls']; let i=index">
+                            <button class="btn btn-sm btn-block btn-outline-primary" type="button"
+                                [class.active]="interest.value"
+                                (click)="interest.setValue(!interest.value)"
+                            >{{interests[i].name}}</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <label>Intent To Enroll</label>
+            <div class="card-body">
+
+                
+
+                <!-- Q1 -->
+                <div class="form-group">
+                    <div class="row mx-auto">
+                        <label>
+                            Explain this startup as u understood (Not more than 5 lines).
+                        </label>
+                    </div>
+                    <div class="row mx-auto">
+                        <textarea class="form-control" formControlName="explain"></textarea>
+                    </div>
+                    <p class="error-message"
+                        [hidden]="internEnrollForm.controls.explain.valid || !internEnrollForm.controls.explain.touched">
+                        Please provide an answer!
+                    </p>
+                </div>
+
+                <!-- Q2 -->
+                <div class="form-group">
+                    <div class="row mx-auto">
+                        <label>
+                            Why you are interested to work for a startup?
+                        </label>
+                    </div>
+                    <div class="row mx-auto">
+                        <textarea class="form-control" formControlName="intent"></textarea>
+                    </div>
+                    <p class="error-message"
+                        [hidden]="internEnrollForm.controls.intent.valid || !internEnrollForm.controls.intent.touched">
+                        Please provide an answer!
+                    </p>
+                </div>
+
+                <!-- Q3 -->
+                <div class="form-group">
+                    <div class="row mx-auto">
+                        <label>
+                           Describe yourself in 5 lines.
+                        </label>
+                    </div>
+                    <div class="row mx-auto">
+                        <textarea class="form-control" formControlName="describe"></textarea>
+                    </div>
+                    <p class="error-message"
+                        [hidden]="internEnrollForm.controls.describe.valid || !internEnrollForm.controls.describe.touched">
+                        Please provide an answer!
+                    </p>
+                </div>
+                
+
+            </div>
+        </div>
+
+        <div class="row my-3">
+            <div class="col-lg-3 col-6">
+                <button type="submit" class="btn btn-success btn-block"
+                [disabled]="!internEnrollForm.valid">Submit</button>
+            </div>
+        </div>
+
+    </form>
+
+</section>
+
+<ng-template #modelTemplate>
+    <div class="modal-header mdhead">
+        <div class="col">
+            <div class="row">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3 class="text-center">Thank You!</h3>
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-center mt-2">
+                <p class="text-center">Your response was submitted successfully </p>
+                <p class="text-center">Please expect an interview call within 24-48 hours from us.</p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn mbtn pull-right" aria-label="Close" (click)="closeModal()">
+            Okay
+        </button>
+    </div>
+</ng-template>
+

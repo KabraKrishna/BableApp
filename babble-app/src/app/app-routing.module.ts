@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { TutorEnquiryPageComponent } from './components/tutor-enquiry-page/tutor-enquiry-page.component';
+import { InternEnrollComponent } from './components/intern-enroll/intern-enroll.component';
 
 
 const routes: Routes = [{
@@ -13,6 +14,8 @@ const routes: Routes = [{
   path: 'register', component: RegistrationPageComponent
 },{
   path: 'tutor-enquiry', component: TutorEnquiryPageComponent
+},{
+  path: 'intern-enroll', component: InternEnrollComponent
 }
 ];
 

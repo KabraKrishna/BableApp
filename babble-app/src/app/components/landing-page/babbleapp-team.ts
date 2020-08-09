@@ -1,5 +1,7 @@
 export class TeamBabbleApp {
 
+    isFirstTime: boolean = true;
+
     team: any = [{
         name: 'Aakash Ingole',
         role: 'Founder',

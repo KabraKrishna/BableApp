@@ -12,6 +12,7 @@ import { AngularFireDatabaseModule  } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { TutorEnquiryPageComponent } from './components/tutor-enquiry-page/tutor-enquiry-page.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { InternEnrollComponent } from './components/intern-enroll/intern-enroll.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AppComponent,
     LandingPageComponent,
     RegistrationPageComponent,
-    TutorEnquiryPageComponent
+    TutorEnquiryPageComponent,
+    InternEnrollComponent
   ],
   imports: [
     BrowserModule,

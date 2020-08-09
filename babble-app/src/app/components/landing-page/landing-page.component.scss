@@ -31,6 +31,36 @@
     }
   }
   
+  .adhead{
+    background: transparent !important;
+    height: 450px;
+    font-family: Candara;
+  }
+  #advImg{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-between;
+   height: 400px;
+  }
+  #advImg > h1{
+    text-align: center;
+    font-weight: 900;
+    background: -webkit-linear-gradient(0deg, #ff7c00 10%, #da475f 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  #advImg > img{
+    width: 65%;
+  }
+  .abtn{
+    background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+    color: #fff;
+    font-weight: 700;
+    margin: 2px auto;
+    width: 50%;
+  }
 
 .mbtn{
   background: #fff;
