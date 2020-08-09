@@ -56,7 +56,7 @@ export class RegistrationPageComponent implements OnInit {
       gender: new FormControl('', Validators.required),
       isComfortableWithOppositeGender: new FormControl('', Validators.required),
       referredFrom: new FormControl(''),
-      timeSlot: '',
+      timeSlot: new FormControl('', Validators.required),
       promoCode: new FormControl('', promoCodeValidator(this.promocode)),
       purpose: new FormControl('', Validators.required),
       isDeclarationAccepted: new FormControl('', Validators.required),
@@ -74,7 +74,6 @@ export class RegistrationPageComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this.db.database.ref('/timeSlots/').once('value').then((snapshot) => {
         for(let entry in snapshot.toJSON()){
-          snapshot.toJSON()[entry].id = entry;
           this.timeSlotArray.push(snapshot.toJSON()[entry]);
           if(entry === "10"){
             console.log("Now resolved.")
