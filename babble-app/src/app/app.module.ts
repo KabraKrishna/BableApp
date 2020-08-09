@@ -13,6 +13,7 @@ import { environment } from '../environments/environment';
 import { TutorEnquiryPageComponent } from './components/tutor-enquiry-page/tutor-enquiry-page.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
+
 @NgModule({
   declarations: [
     AppComponent,
