@@ -1,0 +1,77 @@
+{
+  "1596955911604" : {
+    "aboutMe" : "okay",
+    "address" : "Aurangabad",
+    "age" : 25,
+    "availableHours" : 1,
+    "contactNumber" : "1234567890",
+    "email" : "kabrak2705@gmail.com",
+    "firstName" : "Krishna",
+    "gender" : "male",
+    "interests" : [ {
+      "isSelected" : true,
+      "name" : "Management"
+    }, {
+      "isSelected" : true,
+      "name" : "Operations"
+    } ],
+    "isComittedToWork" : "yes",
+    "lastName" : "Kabra",
+    "profession" : "IT Professional",
+    "understandingAboutUs" : "Something",
+    "whyWokrForStartUp" : "Anything"
+  },
+  "1596986060756" : {
+    "aboutMe" : "I am a CS graduate from JNEC, Aurangabad , and a data science enthusiast. I am looking forward to study masters degree in Information Systems Management. I have interned as Machine Learning Engineer. I have also built websites as a freelancer. I look forward to join aspiring youngsters willing to build a community that works together for proven success. ",
+    "address" : "D-1105, Puraniks Abitante, Bavdhan , Pune , MH 411021",
+    "age" : 24,
+    "availableHours" : 5,
+    "contactNumber" : "8806068290",
+    "email" : "abhishekpalkar52@gmail.com",
+    "firstName" : "Abhishek",
+    "gender" : "male",
+    "interests" : [ {
+      "isSelected" : true,
+      "name" : "Content Writing"
+    }, {
+      "isSelected" : true,
+      "name" : "Management"
+    }, {
+      "isSelected" : true,
+      "name" : "Operations"
+    } ],
+    "isComittedToWork" : "yes",
+    "lastName" : "Palkar",
+    "profession" : "ML intern, Freelancer(web dev.)",
+    "understandingAboutUs" : "Although, the uncertainty that COVID-19 brought, learning shouldn’t stop. Moreover, this startup is demanding just 15 minutes for people to build confidence and efficiency to have seamless conversations.",
+    "whyWokrForStartUp" : "I believe in sharing the knowledge I’ve gained, to help people in any way possible. Working in startup builds an individual’s understanding of how the business works which nurtures their inherent abilities and takes them to fore."
+  },
+  "1596987681110" : {
+    "aboutMe" : "To start with basics I am a freelance Designer and a Producer at my core, Apart from that I am a Founding member of Ortigan (service & product based tech startup),  have worked with a digit as tech Influencer and Reviewer for a year,  I am associated with Share a book India Association, an NGO  through which we teach and run a literacy-library program throughout India at many underprivileged schools on weekends, I am currently tasked with Operations and Product responsibilities apart from my core Field in a Project at Ortigan",
+    "address" : "65/142 Indrayani , Chatrapati Nagar, Satara Parisar, Aurangabad",
+    "age" : 22,
+    "availableHours" : 3,
+    "contactNumber" : "9860460265",
+    "email" : "jaideepkhedekar@gmail.com",
+    "firstName" : "Jaideep ",
+    "gender" : "male",
+    "interests" : [ {
+      "isSelected" : true,
+      "name" : "Content Writing"
+    }, {
+      "isSelected" : true,
+      "name" : "Graphics Designing"
+    }, {
+      "isSelected" : true,
+      "name" : "Management"
+    }, {
+      "isSelected" : true,
+      "name" : "Operations"
+    } ],
+    "isComittedToWork" : "No",
+    "lastName" : "Khedekar",
+    "profession" : "Graphic Designer & Product Owner ",
+    "understandingAboutUs" : "From what I've seen until now, this project has a noble cause and a decent business model but the thing that really brought me out here was the use case that we're dealing with,  educating people with the language in which world communicates is like removing the last barrier or blockade onto their expression and ideas. \n",
+    "whyWokrForStartUp" : "My interest in working with a startup stems to the fact that a person can actually learn the core value of an establishment and sync with people directly with less hierarchy in order to obtain growth in skills and value of the profession, this approach dates back to when I used to work with clubs for events and Programs in my College Days.  I am interested in working with your startup cause id love to contribute to Edu-tech."
+  }
+}
