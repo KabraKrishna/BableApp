@@ -5,7 +5,7 @@
     </div>
 
     <div class="row-top" style="align-items: center;">
-        
+
         <div class="logo-row">
             <div class="logo-container">
                 <div class="logo-col-1">
@@ -41,8 +41,8 @@
             <div class="tutor-button" (click)="onEnquiryCalled()">
                 Join Us As Tutor
             </div>
-            <div class="btn-join-us" (click)="onJoinUsCalled()">
-                Join our Team
+            <div class="btn-join-us" (click)="scrollToElement(course,'course')">
+                Course Details
             </div>
         </div>
     </div>
@@ -59,14 +59,133 @@
                 <strong style="font-size: 1.8rem;">15 Minutes </strong> a day.
             </span>
             <div class="row-top" style="justify-content: center;">
-                <div class="content-button" (click)="onJoinUsCalled()">
-                    Join Our Team
+                <div class="content-button" (click)="scrollToElement(course,'course')">
+                    Course Details
                 </div>&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="content-button" (click)="onRegisterCalled()">
                     Register Now
                 </div>
             </div>
 
+        </div>
+    </div>
+
+</section>
+
+<section #course id="course" class="container-section" style="height: 90vh;">
+
+    <div class="row-top"
+        style="flex-direction: row-reverse !important; justify-content: space-evenly; margin-top: 10px;">
+
+        <div class="body-col left-col-bg">
+            <img id="img2" src="../../../assets/course.jpg" width="450">
+        </div>
+        <div class="body-col course-stepper">
+
+            <div class="right-top-heading">
+                <div class="heading-text" style="padding-right: 20px;">
+                    Our Course
+                </div>
+            </div>
+            <div>
+                <mat-vertical-stepper [linear]="false" #stepper>
+                    <mat-step>
+                        <ng-template matStepLabel>
+                            <h4>Who is Eligible ?</h4>
+                        </ng-template>
+                        <!-- <ng-template matStepperIcon="number" let-index="index">
+                            <div class="step-icon">
+                                <label>{{index}}</label>
+                            </div>
+                        </ng-template>
+                        <ng-template matStepperIcon="edit" let-index="index">
+                            <div class="step-icon">
+                                <label>{{index}}</label>
+                            </div>
+                        </ng-template> -->
+                        <div class="stepper-content-div">
+                            <div class="stepper-content-icon">
+                                <h4>?</h4>
+                            </div>
+                            <p>
+                                Babble is a platform for people to practice English communication with expert tutors.
+                                This is For those who can read write and understand English but fails to convey in
+                                English language fluently.
+                            </p>
+                        </div>
+
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>
+                            <h4>Course Details</h4>
+                        </ng-template>
+                        <ng-template matStepperIcon="number" let-index="index">
+                            <div class="step-icon">
+                                <label>{{index+1}}</label>
+                            </div>
+                        </ng-template>
+                        <ng-template matStepperIcon="edit" let-index="index">
+                            <div class="step-icon">
+                                <label>{{index+1}}</label>
+                            </div>
+                        </ng-template>
+                        <div class="stepper-list-div">
+                            <div class="stepper-list-icon">
+                                <h4>&#10148;</h4>
+                            </div>
+                            <p>
+                                <strong>Online Classes</strong>&nbsp;-&nbsp;15 minutes one to one, Monday to Saturday.
+                            </p>
+                        </div>
+                        <div class="stepper-list-div">
+                            <div class="stepper-list-icon">
+                                <h4>&#10148;</h4>
+                            </div>
+                            <p>
+                                <strong>Duration</strong>&nbsp;-&nbsp;30 days. +3 classes allowed after 30 days in case
+                                you missed your regular sessions
+                            </p>
+                        </div>
+                        <div class="stepper-list-div">
+                            <div class="stepper-list-icon">
+                                <h4>&#10148;</h4>
+                            </div>
+                            <p>
+                                <strong>Mode of Class</strong>&nbsp;-&nbsp;Google meet / hangout / on call / WhatsApp
+                                audio / Video call.
+                            </p>
+                        </div>
+                        <div class="stepper-list-div">
+                            <div class="stepper-list-icon">
+                                <h4>&#10148;</h4>
+                            </div>
+                            <p>
+                                <strong>Fees</strong>&nbsp;-&nbsp;1500 /- for a Month.
+                            </p>
+                        </div>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>
+                            <h4>Live Class Activity</h4>
+                        </ng-template>
+                        <!-- <ng-template matStepperIcon="number">
+                            <div class="step-icon">
+                                <label>3</label>
+                            </div>
+                        </ng-template>
+                        <ng-template matStepperIcon="edit">
+                            <div class="step-icon">
+                                <label>3</label>
+                            </div>
+                        </ng-template> -->
+                        <div class="stepper-list-div-1">
+                            <div class="stepper-list-icon-1" *ngFor="let activity of activityList">
+                                {{activity}}
+                            </div>
+                        </div>
+                    </mat-step>
+                </mat-vertical-stepper>
+            </div>
         </div>
     </div>
 
@@ -135,7 +254,7 @@
     <div class="row-top"
         style="flex-direction: row-reverse !important; justify-content: space-evenly; margin-top: 24px;">
         <div class="body-col left-col-bg">
-            <img id="img2" src="../../../assets/team.jpg" width="600">
+            <img src="../../../assets/team.jpg" width="600">
         </div>
         <div class="body-col right-col-bg">
 
@@ -175,16 +294,16 @@
 
     <div class="logo-container team-col">
 
-        
+
         <div class="right-top-heading">
             <div class="heading-text" style="padding-right: 20px;">
                 Our Team
             </div>
         </div>
 
-        
+
         <div class="body-col team-member" *ngFor="let member of appTeam">
-            
+
             <div class="card profile-detail">
                 <div class="profile-image">
                     <img [src]="member.image" width="230">
@@ -195,8 +314,10 @@
                     <h5 class="card-text">{{member.role}}</h5>
                 </div>
                 <div class="card-footer">
-                   <a class="social-links" href="https://www.linkedin.com/in/{{member.linkedin}}"><img src="../../../assets/icons/linkedin.png" width="28"></a>
-                   <a class="social-links" href="https://www.instagram.com/{{member.instagram}}/"><img src="../../../assets/icons/instagram-logo.png" width="28"></a>
+                    <a class="social-links" href="https://www.linkedin.com/in/{{member.linkedin}}"><img
+                            src="../../../assets/icons/linkedin.png" width="28"></a>
+                    <a class="social-links" href="https://www.instagram.com/{{member.instagram}}/"><img
+                            src="../../../assets/icons/instagram-logo.png" width="28"></a>
                 </div>
             </div>
 
@@ -254,7 +375,7 @@
 
             <div class="logo-container" id="reachUs">
                 <div class="body-col" style="justify-content: center;">
-                    <strong >Reach Out To Us</strong>
+                    <strong>Reach Out To Us</strong>
                 </div>
             </div>
 
@@ -339,7 +460,7 @@
                     <p class="text-center">We have received your enquiry.<br> We will contact you shortly</p>
                 </div>
             </div>
-            
+
             <div class="row align-items-center justify-content-center mt-2">
                 <p class="text-center"></p>
             </div>
@@ -352,7 +473,7 @@
     </div>
 </ng-template>
 
-<ng-template #advertiseTemplate>
+<!-- <ng-template #advertiseTemplate>
     <div class="modal-header adhead">
         <div class="col">
             <div class="row">
@@ -370,4 +491,4 @@
             </div>
         </div>
     </div>
-</ng-template>
+</ng-template> -->

@@ -66,6 +66,8 @@
   background: #fff;
   color: #da475f;
 }
+
+
   
   @media screen and (min-width: 768px) { 
     .modal:before {
@@ -81,6 +83,19 @@
     text-align: left;
     vertical-align: middle;
   }
+  .step-icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+    color: #fff;
+  }
+
+
 // Desktop View
 @media screen and (min-width: 1200px){
     @import './landing-page.component.1200px.scss';

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { environment } from "../../../environments/environment";
+import { MatVerticalStepper, MatHorizontalStepper, MatStep, MatStepperIcon } from "@angular/material/stepper";
 
 declare var $: any;
 @Component({
@@ -19,7 +20,9 @@ export class LandingPageComponent implements OnInit, OnChanges, AfterViewInit, O
   isMenuOpen:boolean = false;
   bsModalRef: BsModalRef;
   contactForm: FormGroup;
-  @ViewChild('advertiseTemplate') advertiseModel: TemplateRef<any>;
+  activityList = ['Conversation', 'Discussion', 'Role Play', 'Pictorial', 'Video Commentary', 'Interview', 'Error Correctio'];
+
+  //@ViewChild('advertiseTemplate') advertiseModel: TemplateRef<any>;
 
   displayElememnt = {
     mode: 'home'
@@ -51,10 +54,10 @@ export class LandingPageComponent implements OnInit, OnChanges, AfterViewInit, O
 
   ngAfterViewInit(): void {
 
-    if(environment.isFirst){
-      environment.isFirst = false;
-      this.openModal(this.advertiseModel);
-    }
+    // if(environment.isFirst){
+    //   environment.isFirst = false;
+    //   this.openModal(this.advertiseModel);
+    // }
   }
 
   ngOnDestroy(): void {

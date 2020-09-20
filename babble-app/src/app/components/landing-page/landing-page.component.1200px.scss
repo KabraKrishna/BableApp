@@ -419,7 +419,7 @@
 .contact-wa{
     position: fixed;
     content: '';
-    left: 60px;
+    right: 60px;
     bottom: 60px;
     border-radius: 50%;
     display: flex;
@@ -435,3 +435,111 @@
     transform: scale(1.2);
     transition: all 0.3s ease-in-out;
 }
+
+#img2{
+    align-self: center;
+    margin-top: 90px;
+}
+
+.course-stepper{
+    justify-content: flex-start;
+    align-items: flex-end;
+    max-width: 50%;
+    text-align: justify;
+  }
+  
+  .stepper-content-div{
+    position: relative;
+    overflow: visible;
+    width: 100%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    box-shadow: 1px 0.5px 5px #ff7c00;
+    //background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+    //color: #fff;
+    padding: 35px 10px 10px;
+  }
+  .stepper-content-icon{
+    position: absolute;
+    left: 15px;
+    top: -20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    border-radius: 4px;
+    background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .stepper-list-div{
+    position: relative;
+    overflow: visible;
+    width: 100%;
+    margin: 20px auto 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-radius: 16px 0px 16px 0px;
+    box-shadow: 1px 0.5px 5px #ff7c00;
+    //background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+    //color: #fff;
+    padding: 12px 5px 0px 40px;
+  }
+  // .stepper-list-div > p{
+  //   //margin-top: 10px;
+  // }
+  .stepper-list-icon{
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    border-radius: 16px 0px 16px 0px;
+    background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .stepper-list-div-1{
+    position: relative;
+    overflow: visible;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    //background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+    //color: #fff;
+    //padding: 10px;
+  }
+  .stepper-list-icon-1{
+    display: flex;
+    min-height: 40px;
+    min-width: 100px;
+    flex: 1 1 auto;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 10px;
+  }

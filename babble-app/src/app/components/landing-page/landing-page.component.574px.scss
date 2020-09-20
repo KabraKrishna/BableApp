@@ -297,6 +297,7 @@
                     align-items: flex-start;
                     margin-top: 40px;
                 }
+                
                 .vision-text{
                     position: relative;
                     display: flex;
@@ -483,3 +484,116 @@
                         background-color: green;
                         box-shadow: 1px 1px 8px #000;
                     }
+                    .course-stepper{
+                        width: 100%;
+                        min-height: 500px;
+                        margin-top: 70px;
+                        justify-content: flex-start;
+                        align-items: flex-end;
+                        text-align: justify;
+                    }
+                    mat-step{
+                        margin: 0px;
+                    }
+                    .stepper-content-div{
+                        position: relative;
+                        overflow: visible;
+                        width: 100%;
+                        margin: 20px auto;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 4px;
+                        box-shadow: 1px 0.5px 5px #ff7c00;
+                        //background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+                        //color: #fff;
+                        padding: 35px 10px 5px;
+
+                        & p {
+                            font-size: 0.8rem;
+                        }
+                      }
+                      .stepper-content-icon{
+                        position: absolute;
+                        left: 10px;
+                        top: -15px;
+                        width: 30px;
+                        height: 30px;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        border-radius: 4px;
+                        background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+                        color: #fff;
+                      }
+                      
+                      .stepper-list-div{
+                        position: relative;
+                        overflow: visible;
+                        width: 100%;
+                        margin: 10px auto 0px;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                        border-radius: 10px 0px 10px 0px;
+                        box-shadow: 0.5px 0.5px 5px #ff7c00;
+                        padding: 10px 10px 0px 20px;
+
+                        & p {
+                            font-size: 0.8rem;
+                        }
+                      }
+                      // .stepper-list-div > p{
+                      //   //margin-top: 10px;
+                      // }
+                      .stepper-list-icon{
+                        position: absolute;
+                        left: -10px;
+                        top: -10px;
+                        width: 25px;
+                        height: 25px;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 8px 0px 8px 0px;
+                        background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+                        color: #fff;
+
+                        & h4{
+                            font-size: 0.8rem;
+                            margin-block-end: 0;
+                            margin-block-start: 0;
+                        }
+                      }
+                      
+                      .stepper-list-div-1{
+                        position: relative;
+                        overflow: visible;
+                        width: 100%;
+                        margin: 0 auto;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                        flex-wrap: wrap;
+                        align-items: flex-start;
+                        //background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+                        //color: #fff;
+                        //padding: 10px;
+                      }
+                      .stepper-list-icon-1{
+                        display: flex;
+                        min-height: 40px;
+                        min-width: 100px;
+                        flex: 1 1 auto;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 4px;
+                        background-image: linear-gradient(180deg, #ff7c00 10%, #da475f 80%);
+                        color: #fff;
+                        font-size: 1rem;
+                        font-weight: 400;
+                        margin: 10px;
+                      }
