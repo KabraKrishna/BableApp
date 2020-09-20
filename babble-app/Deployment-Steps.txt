@@ -1,0 +1,11 @@
+1. firebase login
+- choose application and hosting as option
+
+2. firebase init
+- provide path to dist folder were built files would be stored
+
+3. ng build (for angular applications only)
+- in order to create deployment build package
+
+4. firebase deploy
+- deploy application to firebase
