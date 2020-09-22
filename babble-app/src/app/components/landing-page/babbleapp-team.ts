@@ -2,13 +2,15 @@ export class TeamBabbleApp {
 
     isFirstTime: boolean = true;
 
+    // {
+    //   name: 'Aakash Ingole',
+    //   role: 'Founder',
+    //   image: '../../../assets/team/akash.png',
+    //   linkedin: 'akash-ingole-896440128',
+    //   instagram: '@aakash_o1'
+    // },
+
     team: any = [{
-        name: 'Aakash Ingole',
-        role: 'Founder',
-        image: '../../../assets/team/akash.png',
-        linkedin: 'akash-ingole-896440128',
-        instagram: '@aakash_o1'
-      },{
         name: 'Pranav Bhoge',
         role: 'Co-founder',
         image: '../../../assets/team/pranav.png',
